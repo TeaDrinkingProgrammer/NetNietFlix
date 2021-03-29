@@ -18,8 +18,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.domain.BBCharacter;
-import nl.avans.netnietflix.ui.CharacterAdapter;
+import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.ui.MediaItemAdapter;
 
 public class HomeFragment extends Fragment{
 
@@ -28,8 +28,8 @@ public class HomeFragment extends Fragment{
     private final String TAG = "Main Activity";
     private final String SAVED_CHARACTER_LIST = "characterList";
     private RecyclerView characterRecyclerView;
-    private CharacterAdapter characterAdapter;
-    private List<BBCharacter> characterList = null;
+    private MediaItemAdapter mediaItemAdapter;
+    private List<MediaItem> characterList = null;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -56,9 +56,9 @@ public class HomeFragment extends Fragment{
         //Als de savedInstanceState gevuld is gebruik die ipv VolleyTask opvragen (al heeft die ook chaching)
         if(savedInstanceState != null){
             Log.d(TAG,"savedInstanceState is used");
-            characterList = (List<BBCharacter>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
-            characterAdapter = new CharacterAdapter(characterList,root.getContext());
-            characterRecyclerView.setAdapter(characterAdapter);
+            characterList = (List<MediaItem>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
+            mediaItemAdapter = new MediaItemAdapter(characterList,root.getContext());
+            characterRecyclerView.setAdapter(mediaItemAdapter);
         }else {
             //Voert een volleyRequest uit dmv constructor(zie VolleyTask). Geeft een response door aan onResponseVolleyTask via een listener.
             Log.d(TAG, "VolleyRequest is executed");
@@ -81,16 +81,16 @@ public class HomeFragment extends Fragment{
 //        Log.d(TAG,"onOptionsItemSelected has been called");
 //        switch (item.getItemId()) {
 //            case R.id.filter_all:
-//                characterAdapter.resetCharactersInRecyclerView();
+//                mediaItemAdapter.resetCharactersInRecyclerView();
 //                return true;
 //            case R.id.filter_alive:
-//                characterAdapter.filterOnStatus("Alive");
+//                mediaItemAdapter.filterOnStatus("Alive");
 //                return true;
 //            case R.id.filter_deceased:
-//                characterAdapter.filterOnStatus("Deceased");
+//                mediaItemAdapter.filterOnStatus("Deceased");
 //                return true;
 //            case R.id.filter_presumed_dead:
-//                characterAdapter.filterOnStatus("Presumed dead");
+//                mediaItemAdapter.filterOnStatus("Presumed dead");
 //                return true;
 //        }
 //        return false;
