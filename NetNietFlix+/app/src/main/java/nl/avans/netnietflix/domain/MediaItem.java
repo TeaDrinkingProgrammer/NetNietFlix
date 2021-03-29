@@ -11,15 +11,17 @@ public class MediaItem {
     private String description;
     private String releaseDate;
     private String mediaType;
+    private int rating;
     private String imgLink;
 
-    public MediaItem(String title, String duration, String genre, String description, String releaseDate, String mediaType, String imgLink) {
+    public MediaItem(String title, String duration, String genre, String description, String releaseDate, String mediaType, int rating, String imgLink) {
         this.title = title;
         this.duration = duration;
         this.genre = genre;
         this.description = description;
         this.releaseDate = releaseDate;
         this.mediaType = mediaType;
+        this.rating = rating;
         this.imgLink = imgLink;
     }
 
@@ -69,6 +71,14 @@ public class MediaItem {
 
     public void setMediaType(String mediaType) {
         this.mediaType = mediaType;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getImgLink() {
