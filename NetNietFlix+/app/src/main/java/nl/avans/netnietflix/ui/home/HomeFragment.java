@@ -1,5 +1,6 @@
 package nl.avans.netnietflix.ui.home;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,10 +19,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
+import nl.avans.netnietflix.applogic.APIcontroller;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.ui.MediaItemAdapter;
 
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment implements APIcontroller.MediaItemControllerListener {
 
     private HomeViewModel homeViewModel;
 
@@ -29,7 +31,7 @@ public class HomeFragment extends Fragment{
     private final String SAVED_CHARACTER_LIST = "characterList";
     private RecyclerView characterRecyclerView;
     private MediaItemAdapter mediaItemAdapter;
-    private List<MediaItem> characterList = null;
+    private List<MediaItem> mediaItems = null;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -56,13 +58,18 @@ public class HomeFragment extends Fragment{
         //Als de savedInstanceState gevuld is gebruik die ipv VolleyTask opvragen (al heeft die ook chaching)
         if(savedInstanceState != null){
             Log.d(TAG,"savedInstanceState is used");
-            characterList = (List<MediaItem>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
-            mediaItemAdapter = new MediaItemAdapter(characterList,root.getContext());
+            mediaItems = (List<MediaItem>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
+            mediaItemAdapter = new MediaItemAdapter(mediaItems,root.getContext());
             characterRecyclerView.setAdapter(mediaItemAdapter);
         }else {
             //Voert een volleyRequest uit dmv constructor(zie VolleyTask). Geeft een response door aan onResponseVolleyTask via een listener.
+            // Call API request
+            APIcontroller mediaItemController = new APIcontroller(this,this.getContext());
+            mediaItemController.loadTrendingMoviesPerWeek();
+
             Log.d(TAG, "VolleyRequest is executed");
         }
+
         return root;
     }
 
@@ -101,10 +108,16 @@ public class HomeFragment extends Fragment{
         Log.d(TAG,"onSaveInstanceState is called");
         super.onSaveInstanceState(outState);
         //Slaat de characterList op in de SavedInstanceState.
-        if(characterList != null){
+        if(mediaItems != null){
             Log.d(TAG,"Characterlist is put in outstate");
-            outState.putSerializable(SAVED_CHARACTER_LIST,(Serializable) characterList);
+            outState.putSerializable(SAVED_CHARACTER_LIST,(Serializable) mediaItems);
         }
     }
 
+    @Override
+    public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context) {
+        this.mediaItems = mediaItems;
+        mediaItemAdapter = new MediaItemAdapter(mediaItems,context);
+        characterRecyclerView.setAdapter(mediaItemAdapter);
     }
+}

@@ -67,7 +67,7 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder>{
             }
         });
         MediaItem mediaItem = mediaItems.get(position);
-        Picasso.get().load(mediaItems.get(position).getImgLink()).resize(350,500).into(holder.mediaListItemImage);
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItems.get(position).getImgLink()).resize(350,500).into(holder.mediaListItemImage);
     }
 
     //Hier de filters
