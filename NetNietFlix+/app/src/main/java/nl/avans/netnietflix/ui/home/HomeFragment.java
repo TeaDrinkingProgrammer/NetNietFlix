@@ -41,8 +41,8 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
         characterRecyclerView = root.findViewById(R.id.character_recycler_view);
 
         //Maakt 2 layoutmanagers
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL,false);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),2, GridLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
 
         //Bij portretoriëntatie, kies normale layout, bij landschap gridlayout
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {

@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 
 public interface API {
-    @GET("trending/movie/week")
+    @GET("trending/all/week")
     Call<MediaItemResponse> getTrendingMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}")
