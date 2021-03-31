@@ -25,6 +25,8 @@ public class APIcontroller implements Callback<MediaItemResponse> {
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
     private static final String API_KEY = "f3e724534425b939df9f8942232ebe68";
+    public static final String GET_TRENDING_MOVIES = "getTrendingMovies";
+    public static final String GET_TOP_RATED_MOVIES = "getTopRatedMovies";
 
     private MediaItemControllerListener listener;
     private Context context;
@@ -53,17 +55,25 @@ public class APIcontroller implements Callback<MediaItemResponse> {
         Call<MediaItemResponse> call = api.getTrendingMovies(API_KEY);
         call.enqueue(this);
     }
+    public void loadTopRatedMoviesPerWeek() {
+        Call<MediaItemResponse> call = api.getTopRatedMovies(API_KEY);
+        call.enqueue(this);
+    }
 
     @Override
     public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
         Log.d(LOG_TAG, "onResponse() - statuscode: " + response.code());
-
         if(response.isSuccessful()) {
             Log.d(LOG_TAG, "response: " + response.body());
-
             // Deserialization
             List<MediaItem> mediaItems = response.body().getResults();
-            listener.onMediaItemsAvailable(mediaItems,context);
+           if(response.raw().networkResponse().request().url().url().toString().contains("trending")){
+               listener.onMediaItemsAvailable(mediaItems,context,GET_TRENDING_MOVIES);
+           } else{
+               listener.onMediaItemsAvailable(mediaItems,context,GET_TOP_RATED_MOVIES);
+           }
+
+
         } else {
             Log.e(LOG_TAG, "Not successful! Message: " + response.message());
         }
@@ -75,6 +85,6 @@ public class APIcontroller implements Callback<MediaItemResponse> {
     }
 
     public interface MediaItemControllerListener {
-        public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context);
+        public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context, String callName);
     }
 }

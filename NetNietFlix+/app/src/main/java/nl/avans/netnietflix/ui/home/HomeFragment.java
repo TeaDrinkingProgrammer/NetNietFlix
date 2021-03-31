@@ -29,8 +29,10 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
 
     private final String TAG = "Main Activity";
     private final String SAVED_CHARACTER_LIST = "characterList";
-    private RecyclerView characterRecyclerView;
-    private MediaItemAdapter mediaItemAdapter;
+    private RecyclerView trendingRecyclerview;
+    private RecyclerView topRatedRecyclerview;
+    private MediaItemAdapter trendingMoviesAdapter;
+    private MediaItemAdapter topRatedMoviesAdapter;
     private List<MediaItem> mediaItems = null;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,18 +40,23 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        characterRecyclerView = root.findViewById(R.id.character_recycler_view);
+        trendingRecyclerview = root.findViewById(R.id.trending_recycler_view);
+        topRatedRecyclerview = root.findViewById(R.id.top_rated_recycler_view);
 
         //Maakt 2 layoutmanagers
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
 
         //Bij portretoriëntatie, kies normale layout, bij landschap gridlayout
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            characterRecyclerView.setLayoutManager(linearLayoutManager);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
+            LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
+            trendingRecyclerview.setLayoutManager(linearLayoutManager);
+            topRatedRecyclerview.setLayoutManager(linearLayoutManager2);
             Log.d(TAG,"linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            characterRecyclerView.setLayoutManager(gridLayoutManager);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
+            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
+            trendingRecyclerview.setLayoutManager(gridLayoutManager);
+            topRatedRecyclerview.setLayoutManager(gridLayoutManager2);
             Log.d(TAG,"gridLayoutManager is used");
         }
         //CharacterAPITask apiTask = new CharacterAPITask(this);
@@ -59,14 +66,16 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
         if(savedInstanceState != null){
             Log.d(TAG,"savedInstanceState is used");
             mediaItems = (List<MediaItem>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
-            mediaItemAdapter = new MediaItemAdapter(mediaItems,root.getContext());
-            characterRecyclerView.setAdapter(mediaItemAdapter);
+            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,root.getContext());
+            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
+            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,root.getContext());
+            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
         }else {
             //Voert een volleyRequest uit dmv constructor(zie VolleyTask). Geeft een response door aan onResponseVolleyTask via een listener.
             // Call API request
             APIcontroller mediaItemController = new APIcontroller(this,this.getContext());
             mediaItemController.loadTrendingMoviesPerWeek();
-
+            mediaItemController.loadTopRatedMoviesPerWeek();
             Log.d(TAG, "VolleyRequest is executed");
         }
 
@@ -88,16 +97,16 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
 //        Log.d(TAG,"onOptionsItemSelected has been called");
 //        switch (item.getItemId()) {
 //            case R.id.filter_all:
-//                mediaItemAdapter.resetCharactersInRecyclerView();
+//                trendingMoviesAdapter.resetCharactersInRecyclerView();
 //                return true;
 //            case R.id.filter_alive:
-//                mediaItemAdapter.filterOnStatus("Alive");
+//                trendingMoviesAdapter.filterOnStatus("Alive");
 //                return true;
 //            case R.id.filter_deceased:
-//                mediaItemAdapter.filterOnStatus("Deceased");
+//                trendingMoviesAdapter.filterOnStatus("Deceased");
 //                return true;
 //            case R.id.filter_presumed_dead:
-//                mediaItemAdapter.filterOnStatus("Presumed dead");
+//                trendingMoviesAdapter.filterOnStatus("Presumed dead");
 //                return true;
 //        }
 //        return false;
@@ -115,9 +124,15 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
     }
 
     @Override
-    public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context) {
-        this.mediaItems = mediaItems;
-        mediaItemAdapter = new MediaItemAdapter(mediaItems,context);
-        characterRecyclerView.setAdapter(mediaItemAdapter);
+    public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context,String callName) {
+        if(callName.equals(APIcontroller.GET_TRENDING_MOVIES)){
+            this.mediaItems = mediaItems;
+            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,context);
+            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
+        } else {
+            topRatedMoviesAdapter = new MediaItemAdapter(mediaItems,context);
+            topRatedRecyclerview.setAdapter(topRatedMoviesAdapter);
+        }
+
     }
 }

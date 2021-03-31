@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,7 +10,7 @@
     tools:context=".ui.home.HomeFragment"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/section_title"
+        android:id="@+id/trending_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12sp"
@@ -17,7 +21,21 @@
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/character_recycler_view"
-    android:layout_below="@+id/section_title"/>
+    android:id="@+id/trending_recycler_view"
+    android:layout_below="@+id/trending_title"/>
+    <TextView
+        android:id="@+id/top_rated_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12sp"
+        android:textSize="20sp"
+        android:text="Top Rated:"
+        android:layout_below="@+id/trending_recycler_view"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/top_rated_recycler_view"
+        android:layout_below="@+id/top_rated_title"/>
 
 </RelativeLayout>
+</ScrollView>
