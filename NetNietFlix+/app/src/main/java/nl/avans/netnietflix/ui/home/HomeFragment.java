@@ -1,6 +1,5 @@
 package nl.avans.netnietflix.ui.home;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,23 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.Serializable;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.repository.API.APIcontroller;
+import nl.avans.netnietflix.repository.API.TrendingMediaItemcontroller;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
-public class HomeFragment extends Fragment implements APIcontroller.MediaItemControllerListener {
-
-    private HomeViewModel homeViewModel;
+public class HomeFragment extends Fragment {
 
     private final String TAG = "Main Activity";
     private final String SAVED_CHARACTER_LIST = "characterList";
@@ -33,7 +31,8 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
     private RecyclerView topRatedRecyclerview;
     private MediaItemAdapter trendingMoviesAdapter;
     private MediaItemAdapter topRatedMoviesAdapter;
-    private List<MediaItem> mediaItems = null;
+    private HomeViewModel homeViewModel;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -47,40 +46,41 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
 
         //Bij portretoriëntatie, kies normale layout, bij landschap gridlayout
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
-            LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL,false);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(linearLayoutManager);
             topRatedRecyclerview.setLayoutManager(linearLayoutManager2);
-            Log.d(TAG,"linearLayoutManager is used");
+            Log.d(TAG, "linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
-            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(),2, GridLayoutManager.HORIZONTAL,false);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(gridLayoutManager);
             topRatedRecyclerview.setLayoutManager(gridLayoutManager2);
-            Log.d(TAG,"gridLayoutManager is used");
-        }
-        //CharacterAPITask apiTask = new CharacterAPITask(this);
-        //apiTask.execute();
-
-        //Als de savedInstanceState gevuld is gebruik die ipv VolleyTask opvragen (al heeft die ook chaching)
-        if(savedInstanceState != null){
-            Log.d(TAG,"savedInstanceState is used");
-            mediaItems = (List<MediaItem>) savedInstanceState.getSerializable(SAVED_CHARACTER_LIST);
-            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,root.getContext());
-            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
-            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,root.getContext());
-            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
-        }else {
-            //Voert een volleyRequest uit dmv constructor(zie VolleyTask). Geeft een response door aan onResponseVolleyTask via een listener.
-            // Call API request
-            APIcontroller mediaItemController = new APIcontroller(this,this.getContext());
-            mediaItemController.loadTrendingMoviesPerWeek();
-            mediaItemController.loadTopRatedMoviesPerWeek();
-            Log.d(TAG, "VolleyRequest is executed");
+            Log.d(TAG, "gridLayoutManager is used");
         }
 
-        return root;
-    }
+        trendingMoviesAdapter = new MediaItemAdapter(this.getContext());
+        topRatedMoviesAdapter = new MediaItemAdapter(this.getContext());
+
+        trendingRecyclerview.setAdapter(trendingMoviesAdapter);
+        topRatedRecyclerview.setAdapter(topRatedMoviesAdapter);
+
+        homeViewModel.getTrendingMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
+            @Override
+            public void onChanged(@Nullable List<MediaItem> mediaItems) {
+                Log.d(TAG, "onChanged");
+                    trendingMoviesAdapter.setMediaItems(mediaItems);
+            }
+        });
+
+        homeViewModel.getTopRatedMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
+            @Override
+            public void onChanged(@Nullable List<MediaItem> mediaItems) {
+                Log.d(TAG, "onChanged");
+                topRatedMoviesAdapter.setMediaItems(mediaItems);
+            }
+        });
+
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,28 +111,6 @@ public class HomeFragment extends Fragment implements APIcontroller.MediaItemCon
 //        }
 //        return false;
 //    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        Log.d(TAG,"onSaveInstanceState is called");
-        super.onSaveInstanceState(outState);
-        //Slaat de characterList op in de SavedInstanceState.
-        if(mediaItems != null){
-            Log.d(TAG,"Characterlist is put in outstate");
-            outState.putSerializable(SAVED_CHARACTER_LIST,(Serializable) mediaItems);
-        }
-    }
-
-    @Override
-    public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context,String callName) {
-        if(callName.equals(APIcontroller.GET_TRENDING_MOVIES)){
-            this.mediaItems = mediaItems;
-            trendingMoviesAdapter = new MediaItemAdapter(mediaItems,context);
-            trendingRecyclerview.setAdapter(trendingMoviesAdapter);
-        } else {
-            topRatedMoviesAdapter = new MediaItemAdapter(mediaItems,context);
-            topRatedRecyclerview.setAdapter(topRatedMoviesAdapter);
-        }
-
+        return root;
     }
 }
