@@ -28,12 +28,11 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder>{
     private List<MediaItem> mediaItemsOriginal;
     private Context context;
 
-    public MediaItemAdapter(List<MediaItem> mediaItems, Context context) {
+    public MediaItemAdapter(Context context) {
         //De lijst met mediaItems en de context (hier de Mainclass)
-        this.mediaItems = mediaItems;
-        mediaItemsOriginal = new ArrayList<MediaItem>();
-        mediaItemsOriginal.addAll(mediaItems);
         this.context = context;
+        mediaItems = new ArrayList<MediaItem>();
+        mediaItemsOriginal = new ArrayList<MediaItem>();
         Log.d(TAG,"Constructor is called");
     }
 
@@ -68,6 +67,13 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder>{
         });
         MediaItem mediaItem = mediaItems.get(position);
         Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItems.get(position).getImgLink()).resize(350,500).into(holder.mediaListItemImage);
+    }
+    public void setMediaItems(List<MediaItem> mediaItems){
+        Log.d(TAG, "setMovieList");
+        this.mediaItems.clear();
+        this.mediaItems.addAll(mediaItems);
+        this.mediaItemsOriginal.addAll(mediaItems);
+        this.notifyDataSetChanged();
     }
 
     //Hier de filters

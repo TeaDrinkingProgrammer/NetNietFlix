@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class APIcontroller implements Callback<MediaItemResponse> {
+public class TrendingMediaItemcontroller implements Callback<MediaItemResponse> {
 
     private final String LOG_TAG = this.getClass().getSimpleName();
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
@@ -29,15 +29,13 @@ public class APIcontroller implements Callback<MediaItemResponse> {
     public static final String GET_TOP_RATED_MOVIES = "getTopRatedMovies";
 
     private MediaItemControllerListener listener;
-    private Context context;
 
     private final Retrofit retrofit;
     private final Gson gson;
     private final API api;
 
-    public APIcontroller(MediaItemControllerListener listener, Context context) {
+    public TrendingMediaItemcontroller(MediaItemControllerListener listener) {
         this.listener = listener;
-        this.context = context;
 
         gson = new GsonBuilder()
                 .setLenient()
@@ -55,10 +53,7 @@ public class APIcontroller implements Callback<MediaItemResponse> {
         Call<MediaItemResponse> call = api.getTrendingMovies(API_KEY);
         call.enqueue(this);
     }
-    public void loadTopRatedMoviesPerWeek() {
-        Call<MediaItemResponse> call = api.getTopRatedMovies(API_KEY);
-        call.enqueue(this);
-    }
+
 
     @Override
     public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
@@ -67,13 +62,7 @@ public class APIcontroller implements Callback<MediaItemResponse> {
             Log.d(LOG_TAG, "response: " + response.body());
             // Deserialization
             List<MediaItem> mediaItems = response.body().getResults();
-           if(response.raw().networkResponse().request().url().url().toString().contains("trending")){
-               listener.onMediaItemsAvailable(mediaItems,context,GET_TRENDING_MOVIES);
-           } else{
-               listener.onMediaItemsAvailable(mediaItems,context,GET_TOP_RATED_MOVIES);
-           }
-
-
+            listener.onMediaItemsAvailable(mediaItems,0);
         } else {
             Log.e(LOG_TAG, "Not successful! Message: " + response.message());
         }
@@ -82,9 +71,5 @@ public class APIcontroller implements Callback<MediaItemResponse> {
     @Override
     public void onFailure(@NotNull Call<MediaItemResponse> call, Throwable t) {
         Log.e(LOG_TAG, "onFailure - " + t.getMessage());
-    }
-
-    public interface MediaItemControllerListener {
-        public void onMediaItemsAvailable(List<MediaItem> mediaItems, Context context, String callName);
     }
 }
