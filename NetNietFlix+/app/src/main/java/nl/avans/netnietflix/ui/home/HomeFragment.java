@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.applogic.APIcontroller;
+import nl.avans.netnietflix.repository.API.APIcontroller;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
