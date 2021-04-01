@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.DAO;
+package nl.avans.netnietflix.repository.API;
 
 import nl.avans.netnietflix.domain.MediaItemResponse;
 import retrofit2.Call;

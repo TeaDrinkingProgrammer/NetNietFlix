@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.applogic;
+package nl.avans.netnietflix.repository.API;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import nl.avans.netnietflix.DAO.API;
+import nl.avans.netnietflix.repository.API.API;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.domain.MediaItemResponse;
 import retrofit2.Call;
