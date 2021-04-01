@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui;
+package nl.avans.netnietflix.ui.RecyclerView;
 
 import android.util.Log;
 import android.view.View;

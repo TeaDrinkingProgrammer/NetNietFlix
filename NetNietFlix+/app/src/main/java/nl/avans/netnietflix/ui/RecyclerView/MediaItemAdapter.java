@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui;
+package nl.avans.netnietflix.ui.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.avans.netnietflix.DetailActivity;
+import nl.avans.netnietflix.ui.DetailActivity;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.MediaItem;
 

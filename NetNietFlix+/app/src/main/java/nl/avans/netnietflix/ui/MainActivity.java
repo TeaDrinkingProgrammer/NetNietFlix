@@ -1,4 +1,4 @@
-package nl.avans.netnietflix;
+package nl.avans.netnietflix.ui;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import nl.avans.netnietflix.R;
 
 public class MainActivity extends AppCompatActivity {
 
