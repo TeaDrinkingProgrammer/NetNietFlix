@@ -21,9 +21,9 @@ import nl.avans.netnietflix.ui.DetailActivity;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.MediaItem;
 
-public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder>{
+public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
-    final static String INTENT_EXTRA_CHARACTER = "character";
+    final static String INTENT_EXTRA_MEDIA_ITEM = "media_item";
     private List<MediaItem> mediaItems;
     private List<MediaItem> mediaItemsOriginal;
     private Context context;
@@ -62,7 +62,7 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder>{
                 //MediaItem wordt hier gecast als Serializable om hem te kunnen passen met de intent.
                 Log.d(TAG,"onClick is called");
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra(INTENT_EXTRA_CHARACTER, (Serializable) mediaItems.get(position));
+                intent.putExtra(INTENT_EXTRA_MEDIA_ITEM, (Serializable) mediaItems.get(position)); // Gaat fout
                 context.startActivity(intent);
             }
         });

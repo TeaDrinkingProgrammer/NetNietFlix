@@ -10,10 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NetNietFlix">
-        <activity android:name=".ui.DetailActivity"></activity>
+        <activity android:name=".ui.DetailActivity"
+            android:parentActivityName=".ui.MainActivity"
+            ></activity>
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,8 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12sp"
-        android:textSize="20sp"
-        android:text="Trending:"
+        android:textSize="23sp"
+        android:text="Trending"
+        android:textStyle="bold"
         android:layout_alignParentTop="true" />
     <!--        android:layout_above="@+id/character_recycler_view"-->
 <androidx.recyclerview.widget.RecyclerView
@@ -28,8 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12sp"
-        android:textSize="20sp"
-        android:text="Top Rated:"
+        android:textSize="23sp"
+        android:text="Top Rated"
+        android:textStyle="bold"
         android:layout_below="@+id/trending_recycler_view"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

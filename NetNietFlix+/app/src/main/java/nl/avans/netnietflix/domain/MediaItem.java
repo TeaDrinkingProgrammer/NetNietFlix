@@ -4,10 +4,11 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MediaItem {
+public class MediaItem implements Serializable {
     @SerializedName("poster_path")
     private String imgLink;
     @SerializedName("overview")
