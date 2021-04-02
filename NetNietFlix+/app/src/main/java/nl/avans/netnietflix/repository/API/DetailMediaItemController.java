@@ -22,7 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetailMediaItemController extends GenericMediaItemController<DetailedMediaItem> implements Callback<DetailedMediaItem> {
 
     private DetailedMediaItemListener listener;
-
+    public DetailMediaItemController(DetailedMediaItemListener listener){
+        this.listener = listener;
+    }
     public void getMediaItemDetails(int MediaItemid) {
         Call<DetailedMediaItem> call = api.getMediaItemDetails(MediaItemid,API_KEY);
         call.enqueue(this);

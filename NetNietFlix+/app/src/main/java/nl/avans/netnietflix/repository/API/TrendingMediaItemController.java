@@ -22,8 +22,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TrendingMediaItemController extends GenericMediaItemController<MediaItemResponse> implements Callback<MediaItemResponse> {
 
     private MediaItemControllerListener listener;
-    public void loadTrendingMoviesPerWeek() {
+    public TrendingMediaItemController(MediaItemControllerListener listener){
         this.listener = listener;
+    }
+    public void loadTrendingMoviesPerWeek() {
         Call<MediaItemResponse> call = api.getTrendingMediaItems(API_KEY);
         call.enqueue(this);
     }
