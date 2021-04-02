@@ -6,30 +6,21 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
-import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
-import nl.avans.netnietflix.repository.API.TrendingMediaItemController;
-import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
 public class HomeViewModel extends ViewModel implements MediaItemControllerListener {
 
     private MutableLiveData<List<MediaItem>> trendingMediaItems = null;
     private MutableLiveData<List<MediaItem>> topRatedMediaItems = null;
     private String TAG = this.getClass().getSimpleName();
-    private Context context;
-    private RecyclerView trendingRecyclerview;
-    private RecyclerView topRatedRecyclerview;
-    private MediaItemAdapter trendingMoviesAdapter;
-    private MediaItemAdapter topRatedMoviesAdapter;
     private DataManager dataManager;
 
-    public void HomeViewModel(){
+    public HomeViewModel(){
          dataManager = new DataManager();
     }
 
@@ -45,7 +36,7 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
         Log.d(TAG,"getMediaItems is executed");
         if(topRatedMediaItems == null){
             topRatedMediaItems = new MutableLiveData<>();
-            loadTopRatedMediaItems( this);
+            loadTopRatedMediaItems( (MediaItemControllerListener) this);
         }
         return topRatedMediaItems;
     }
@@ -61,7 +52,6 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
         Log.d(TAG, "loadMediaItems");
         dataManager.loadTopRatedMediaItems(listener);
     }
-
 
     @Override
     public void onMediaItemsAvailable(List<MediaItem> mediaItems, int id) {
