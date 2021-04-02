@@ -18,53 +18,25 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TopRatedMediaItemController implements Callback<MediaItemResponse> {
-
-    private final String LOG_TAG = this.getClass().getSimpleName();
-    public static final String BASE_URL = "https://api.themoviedb.org/3/";
-    public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
-    private static final String API_KEY = "f3e724534425b939df9f8942232ebe68";
+public class TopRatedMediaItemController extends GenericMediaItemController<MediaItemResponse> implements Callback<MediaItemResponse> {
 
     private MediaItemControllerListener listener;
-    private Context context;
-
-    private final Retrofit retrofit;
-    private final Gson gson;
-    private final API api;
-
-    public TopRatedMediaItemController(MediaItemControllerListener listener) {
-        this.listener = listener;
-        this.context = context;
-
-        gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        api = retrofit.create(API.class);
-    }
-
     public void loadTopRatedMoviesPerWeek() {
+        this.listener = listener;
         Call<MediaItemResponse> call = api.getTopRatedMediaItems(API_KEY);
         call.enqueue(this);
     }
 
     @Override
     public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
-        Log.d(LOG_TAG, "onResponse() - statuscode: " + response.code());
-        if (response.isSuccessful()) {
-            Log.d(LOG_TAG, "response: " + response.body());
+        Log.d(TAG, "onResponse() - statuscode: " + response.code());
+        if(response.isSuccessful()) {
+            Log.d(TAG, "response: " + response.body());
             // Deserialization
             List<MediaItem> mediaItems = response.body().getResults();
             listener.onMediaItemsAvailable(mediaItems,1);
+        } else {
+            Log.e(TAG, "Not successful! Message: " + response.message());
         }
     }
-        @Override
-        public void onFailure (@NotNull Call < MediaItemResponse > call, Throwable t){
-            Log.e(LOG_TAG, "onFailure - " + t.getMessage());
-        }
-    }
+}

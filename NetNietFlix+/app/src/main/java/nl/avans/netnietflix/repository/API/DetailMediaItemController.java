@@ -19,35 +19,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DetailMediaItemController implements Callback<DetailedMediaItem> {
-
-    private final String LOG_TAG = this.getClass().getSimpleName();
-    public static final String BASE_URL = "https://api.themoviedb.org/3/";
-    public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
-    private static final String API_KEY = "f3e724534425b939df9f8942232ebe68";
+public class DetailMediaItemController extends GenericMediaItemController<DetailedMediaItem> implements Callback<DetailedMediaItem> {
 
     private DetailedMediaItemListener listener;
-    private Context context;
-
-    private final Retrofit retrofit;
-    private final Gson gson;
-    private final API api;
-
-    public DetailMediaItemController(DetailedMediaItemListener listener) {
-        this.listener = listener;
-        this.context = context;
-
-        gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        api = retrofit.create(API.class);
-    }
 
     public void getMediaItemDetails(int MediaItemid) {
         Call<DetailedMediaItem> call = api.getMediaItemDetails(MediaItemid,API_KEY);
@@ -56,19 +30,16 @@ public class DetailMediaItemController implements Callback<DetailedMediaItem> {
 
     @Override
     public void onResponse(Call<DetailedMediaItem> call, Response<DetailedMediaItem> response) {
-        Log.d(LOG_TAG, "onResponse() - statuscode: " + response.code());
+        Log.d(TAG, "onResponse() - statuscode: " + response.code());
         if (response.isSuccessful()) {
-            Log.d(LOG_TAG, "response: " + response.body());
+            Log.d(TAG, "response: " + response.body());
             // Deserialization
             DetailedMediaItem mediaItem = response.body();
             listener.onMediaItemsAvailable(mediaItem);
         }
     }
-        @Override
-        public void onFailure (@NotNull Call <DetailedMediaItem> call, Throwable t){
-            Log.e(LOG_TAG, "onFailure - " + t.getMessage());
-        }
+
     public interface DetailedMediaItemListener {
         public void onMediaItemsAvailable(DetailedMediaItem mediaItem);
     }
-    }
+}
