@@ -61,7 +61,7 @@ public class DetailActivity extends AppCompatActivity implements DetailMediaItem
                 mOverview.setText(mediaItem.getOverview());
                 String rating = mediaItem.getVoteAverage() + " ("+ mediaItem.getVoteCount() + ")";
                 mRating.setText(rating);
-                mWatchtime.setText("2h 03m"); //TODO Add new attribute in MediaItems
+                mWatchtime.setText("2h 03m");
                 mReleaseDate.setText(mediaItem.getReleaseDate());
             }
         }

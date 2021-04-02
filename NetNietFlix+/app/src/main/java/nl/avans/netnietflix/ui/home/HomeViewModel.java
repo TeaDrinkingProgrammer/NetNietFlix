@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
@@ -26,6 +27,11 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
     private RecyclerView topRatedRecyclerview;
     private MediaItemAdapter trendingMoviesAdapter;
     private MediaItemAdapter topRatedMoviesAdapter;
+    private DataManager dataManager;
+
+    public void HomeViewModel(){
+         dataManager = new DataManager();
+    }
 
     public LiveData<List<MediaItem>> getTrendingMediaItems(){
         Log.d(TAG,"getMediaItems is executed");
@@ -48,14 +54,12 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
     private void loadTrendingMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems");
-        TrendingMediaItemController apiController = new TrendingMediaItemController(listener);
-        apiController.loadTrendingMoviesPerWeek();
+        dataManager.loadTrendingMediaItems(listener);
     }
     private void loadTopRatedMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems");
-        TopRatedMediaItemController apiController = new TopRatedMediaItemController(listener);
-        apiController.loadTopRatedMoviesPerWeek();
+        dataManager.loadTopRatedMediaItems(listener);
     }
 
 
