@@ -12,8 +12,8 @@ import java.util.List;
 
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
-import nl.avans.netnietflix.repository.API.TopRatedMediaItemcontroller;
-import nl.avans.netnietflix.repository.API.TrendingMediaItemcontroller;
+import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
+import nl.avans.netnietflix.repository.API.TrendingMediaItemController;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
 public class HomeViewModel extends ViewModel implements MediaItemControllerListener {
@@ -48,13 +48,13 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
     private void loadTrendingMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems");
-        TrendingMediaItemcontroller apiController = new TrendingMediaItemcontroller(listener);
+        TrendingMediaItemController apiController = new TrendingMediaItemController(listener);
         apiController.loadTrendingMoviesPerWeek();
     }
     private void loadTopRatedMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems");
-        TopRatedMediaItemcontroller apiController = new TopRatedMediaItemcontroller(listener);
+        TopRatedMediaItemController apiController = new TopRatedMediaItemController(listener);
         apiController.loadTopRatedMoviesPerWeek();
     }
 

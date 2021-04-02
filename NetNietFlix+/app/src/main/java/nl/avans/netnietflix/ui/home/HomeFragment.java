@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.repository.API.TrendingMediaItemcontroller;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 

@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.domain.MediaItemResponse;
 import retrofit2.Call;
@@ -18,23 +19,21 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TopRatedMediaItemcontroller implements Callback<MediaItemResponse> {
+public class DetailMediaItemController implements Callback<DetailedMediaItem> {
 
     private final String LOG_TAG = this.getClass().getSimpleName();
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
     private static final String API_KEY = "f3e724534425b939df9f8942232ebe68";
-    public static final String GET_TRENDING_MOVIES = "getTrendingMovies";
-    public static final String GET_TOP_RATED_MOVIES = "getTopRatedMovies";
 
-    private MediaItemControllerListener listener;
+    private DetailedMediaItemListener listener;
     private Context context;
 
     private final Retrofit retrofit;
     private final Gson gson;
     private final API api;
 
-    public TopRatedMediaItemcontroller(MediaItemControllerListener listener) {
+    public DetailMediaItemController(DetailedMediaItemListener listener) {
         this.listener = listener;
         this.context = context;
 
@@ -50,23 +49,26 @@ public class TopRatedMediaItemcontroller implements Callback<MediaItemResponse> 
         api = retrofit.create(API.class);
     }
 
-    public void loadTopRatedMoviesPerWeek() {
-        Call<MediaItemResponse> call = api.getTopRatedMovies(API_KEY);
+    public void getMediaItemDetails(int MediaItemid) {
+        Call<DetailedMediaItem> call = api.getMediaItemDetails(MediaItemid,API_KEY);
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
+    public void onResponse(Call<DetailedMediaItem> call, Response<DetailedMediaItem> response) {
         Log.d(LOG_TAG, "onResponse() - statuscode: " + response.code());
         if (response.isSuccessful()) {
             Log.d(LOG_TAG, "response: " + response.body());
             // Deserialization
-            List<MediaItem> mediaItems = response.body().getResults();
-            listener.onMediaItemsAvailable(mediaItems,1);
+            DetailedMediaItem mediaItem = response.body();
+            listener.onMediaItemsAvailable(mediaItem);
         }
     }
         @Override
-        public void onFailure (@NotNull Call < MediaItemResponse > call, Throwable t){
+        public void onFailure (@NotNull Call <DetailedMediaItem> call, Throwable t){
             Log.e(LOG_TAG, "onFailure - " + t.getMessage());
         }
+    public interface DetailedMediaItemListener {
+        public void onMediaItemsAvailable(DetailedMediaItem mediaItem);
+    }
     }

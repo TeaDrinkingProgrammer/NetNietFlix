@@ -1,6 +1,7 @@
 package nl.avans.netnietflix.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +11,20 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.domain.MediaItem;
+import java.util.List;
 
-public class DetailActivity extends AppCompatActivity {
+import nl.avans.netnietflix.R;
+import nl.avans.netnietflix.domain.DetailedMediaItem;
+import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.repository.API.DetailMediaItemController;
+import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
+
+public class DetailActivity extends AppCompatActivity implements DetailMediaItemController.DetailedMediaItemListener {
 
     private final String TAG = getClass().getSimpleName();
     final static String INTENT_EXTRA_MEDIA_ITEM = "media_item";
     public static final String BASE_URL = "https://image.tmdb.org/t/p/w500";
+    private DetailedMediaItem mediaItem;
     private TextView mTitle;
     private ImageView mImage;
     private TextView mOverview;
@@ -29,7 +36,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mTitle = (TextView) findViewById(R.id.media_item_title) ;
@@ -60,4 +66,10 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onMediaItemsAvailable(DetailedMediaItem mediaItem) {
+        this.mediaItem = mediaItem;
+        Log.d(TAG,"Lorem Ipsum");
+    }
+
 }

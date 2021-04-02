@@ -17,6 +17,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.avans.netnietflix.repository.API.DetailMediaItemController;
+import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
 import nl.avans.netnietflix.ui.DetailActivity;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.MediaItem;
@@ -54,19 +56,22 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> 
     public void onBindViewHolder(@NonNull MediaItemViewHolder holder, int position) {
         //Hier wordt de data in de viewholder gezet
         Log.d(TAG,"onBindViewHolder is called");
+        MediaItem mediaItem = mediaItems.get(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Als er op de viewholder geklikt wordt, wordt de gebruiker doorgestuurd naar de detailpagina
                 //MediaItem wordt hier gecast als Serializable om hem te kunnen passen met de intent.
                 Log.d(TAG,"onClick is called");
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra(INTENT_EXTRA_MEDIA_ITEM, (Serializable) mediaItems.get(position)); // Gaat fout
+                DetailActivity detailActivity = new DetailActivity();
+                DetailMediaItemController apiController = new DetailMediaItemController(detailActivity);
+                apiController.getMediaItemDetails(mediaItem.getId());
+                Intent intent = new Intent(context,detailActivity.getClass());
+                intent.putExtra(INTENT_EXTRA_MEDIA_ITEM, (Serializable) mediaItems.get(position));
                 context.startActivity(intent);
             }
         });
-        MediaItem mediaItem = mediaItems.get(position);
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItems.get(position).getImgLink()).resize(350,500).into(holder.mediaListItemImage);
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItem.getImgLink()).resize(350,500).into(holder.mediaListItemImage);
     }
     public void setMediaItems(List<MediaItem> mediaItems){
         Log.d(TAG, "setMovieList");
