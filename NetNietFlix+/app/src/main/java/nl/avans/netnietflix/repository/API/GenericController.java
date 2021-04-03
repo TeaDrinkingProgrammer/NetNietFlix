@@ -19,6 +19,8 @@ public abstract class GenericController<T> implements Callback<T> {
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
     protected static final String API_KEY = "f3e724534425b939df9f8942232ebe68";
+    protected static final String SESSION_ID = "edce063d81c9ab63b6bd2b61bc4e6e2988c5eb32";
+    protected static final int ACCOUNT_ID = 10274822;
 
     protected Context context;
 

@@ -44,7 +44,7 @@ public class Review {
         this.content = content;
     }
 
-    public class AuthorDetails{
+    private class AuthorDetails{
         @SerializedName("avatar_path")
         private String avatarPath;
         @SerializedName("rating")

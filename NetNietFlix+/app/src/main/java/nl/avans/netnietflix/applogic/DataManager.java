@@ -2,6 +2,7 @@ package nl.avans.netnietflix.applogic;
 
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
+import nl.avans.netnietflix.repository.API.MediaItemListController;
 import nl.avans.netnietflix.repository.API.ReviewController;
 import nl.avans.netnietflix.repository.DataController;
 
@@ -24,5 +25,8 @@ public class DataManager {
     }
     public void getReviewForMovieId(ReviewController.ReviewListener listener, int mediaItemid){
         dataController.getReviewForMovieId(listener, mediaItemid);
+    }
+    public void getMediaItemLists(MediaItemListController.MediaItemListListener mediaItemListListener){
+        dataController.getMediaItemLists(mediaItemListListener);
     }
 }

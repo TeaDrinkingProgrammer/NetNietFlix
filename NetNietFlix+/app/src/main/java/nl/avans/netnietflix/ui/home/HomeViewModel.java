@@ -1,6 +1,5 @@
 package nl.avans.netnietflix.ui.home;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;

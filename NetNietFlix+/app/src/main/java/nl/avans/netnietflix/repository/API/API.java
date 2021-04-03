@@ -3,6 +3,7 @@ package nl.avans.netnietflix.repository.API;
 import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.APIResponse;
 import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.domain.MediaItemList;
 import nl.avans.netnietflix.domain.Review;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -23,4 +24,7 @@ public interface API {
 
     @GET("movie/{id}/reviews")
     Call<APIResponse<Review>> getReviewsForMovieId(@Path("id") int id, @Query("api_key") String apiKey);
+
+    @GET("account/{accountId}/lists")
+    Call<APIResponse<MediaItemList>> getMediaItemLists(@Path("accountId") int id, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
 }

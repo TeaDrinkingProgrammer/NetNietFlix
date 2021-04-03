@@ -55,7 +55,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 Picasso.
                         get()
                         .load(BASE_URL + mediaItem.getImgLink())
-                        .resize(200, 200)
+//                        .resize(200, 200) //TODO Resize properly
                         .into(mImage);
 
                 mOverview.setText(mediaItem.getOverview());
@@ -75,6 +75,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     @Override
     public void onReviewsAvailable(List<Review> reviews) {
        Log.d(TAG,reviews.get(0).getContent());
-        Log.d(TAG,String.valueOf(reviews.get(0).getRating()));
+       Log.d(TAG,String.valueOf(reviews.get(0).getRating()));
     }
 }
