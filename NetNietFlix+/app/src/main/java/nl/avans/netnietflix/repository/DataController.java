@@ -1,36 +1,38 @@
 package nl.avans.netnietflix.repository;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 import java.io.IOException;
 
-import nl.avans.netnietflix.repository.API.DetailMediaItemController;
+import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
-import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
-import nl.avans.netnietflix.repository.API.TrendingMediaItemController;
-
-import static androidx.core.content.ContextCompat.getSystemService;
+import nl.avans.netnietflix.repository.API.ReviewController;
+import nl.avans.netnietflix.repository.API.TopRatedController;
+import nl.avans.netnietflix.repository.API.TrendingController;
 
 public class DataController{
     private static final String TAG = DataController.class.getSimpleName();
     public void loadTrendingMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems from API");
-        TrendingMediaItemController apiController = new TrendingMediaItemController(listener);
+        TrendingController apiController = new TrendingController(listener);
         apiController.loadTrendingMoviesPerWeek();
     }
     public void loadTopRatedMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems from API");
-        TopRatedMediaItemController apiController = new TopRatedMediaItemController(listener);
+        TopRatedController apiController = new TopRatedController(listener);
         apiController.loadTopRatedMoviesPerWeek();
     }
-    public void getMediaItemDetails(DetailMediaItemController.DetailedMediaItemListener listener, int mediaItemid){
-        DetailMediaItemController apiController = new DetailMediaItemController(listener);
+    public void getMediaItemDetails(DetailedMediaItemController.DetailedMediaItemListener listener, int mediaItemid){
+        DetailedMediaItemController apiController = new DetailedMediaItemController(listener);
         apiController.getMediaItemDetails(mediaItemid);
+    }
+
+    public void getReviewForMovieId(ReviewController.ReviewListener reviewListener, int mediaItemId){
+        ReviewController reviewController = new ReviewController(reviewListener);
+        reviewController.getReviewDetails(mediaItemId);
+
     }
     public boolean isConnected() {
         try {

@@ -5,24 +5,24 @@ import android.util.Log;
 import java.util.List;
 
 import nl.avans.netnietflix.domain.MediaItem;
-import nl.avans.netnietflix.domain.MediaItemResponse;
+import nl.avans.netnietflix.domain.APIResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TopRatedMediaItemController extends GenericMediaItemController<MediaItemResponse> implements Callback<MediaItemResponse> {
+public class TopRatedController extends GenericController<APIResponse<MediaItem>> implements Callback<APIResponse<MediaItem>> {
 
     private MediaItemControllerListener listener;
-    public TopRatedMediaItemController(MediaItemControllerListener listener){
+    public TopRatedController(MediaItemControllerListener listener){
         this.listener = listener;
     }
     public void loadTopRatedMoviesPerWeek() {
-        Call<MediaItemResponse> call = api.getTopRatedMediaItems(API_KEY);
+        Call<APIResponse<MediaItem>> call = api.getTopRatedMediaItems(API_KEY);
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
+    public void onResponse(Call<APIResponse<MediaItem>> call, Response<APIResponse<MediaItem>> response) {
         Log.d(TAG, "onResponse() - statuscode: " + response.code());
         if(response.isSuccessful()) {
             Log.d(TAG, "response: " + response.body());

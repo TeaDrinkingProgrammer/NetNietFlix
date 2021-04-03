@@ -1,37 +1,28 @@
 package nl.avans.netnietflix.repository.API;
 
-import android.content.Context;
 import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import nl.avans.netnietflix.repository.API.API;
 import nl.avans.netnietflix.domain.MediaItem;
-import nl.avans.netnietflix.domain.MediaItemResponse;
+import nl.avans.netnietflix.domain.APIResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class TrendingMediaItemController extends GenericMediaItemController<MediaItemResponse> implements Callback<MediaItemResponse> {
+public class TrendingController extends GenericController<APIResponse<MediaItem>> implements Callback<APIResponse<MediaItem>> {
 
     private MediaItemControllerListener listener;
-    public TrendingMediaItemController(MediaItemControllerListener listener){
+    public TrendingController(MediaItemControllerListener listener){
         this.listener = listener;
     }
     public void loadTrendingMoviesPerWeek() {
-        Call<MediaItemResponse> call = api.getTrendingMediaItems(API_KEY);
+        Call<APIResponse<MediaItem>> call = api.getTrendingMediaItems(API_KEY);
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<MediaItemResponse> call, Response<MediaItemResponse> response) {
+    public void onResponse(Call<APIResponse<MediaItem>> call, Response<APIResponse<MediaItem>> response) {
         Log.d(TAG, "onResponse() - statuscode: " + response.code());
         if(response.isSuccessful()) {
             Log.d(TAG, "response: " + response.body());

@@ -1,7 +1,6 @@
 package nl.avans.netnietflix.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +15,11 @@ import java.util.List;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.MediaItem;
-import nl.avans.netnietflix.repository.API.DetailMediaItemController;
-import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
+import nl.avans.netnietflix.domain.Review;
+import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
+import nl.avans.netnietflix.repository.API.ReviewController;
 
-public class DetailActivity extends AppCompatActivity implements DetailMediaItemController.DetailedMediaItemListener {
+public class DetailActivity extends AppCompatActivity implements DetailedMediaItemController.DetailedMediaItemListener, ReviewController.ReviewListener {
 
     private final String TAG = getClass().getSimpleName();
     final static String INTENT_EXTRA_MEDIA_ITEM = "media_item";
@@ -72,4 +72,9 @@ public class DetailActivity extends AppCompatActivity implements DetailMediaItem
         Log.d(TAG,"Lorem Ipsum");
     }
 
+    @Override
+    public void onReviewsAvailable(List<Review> reviews) {
+       Log.d(TAG,reviews.get(0).getContent());
+        Log.d(TAG,String.valueOf(reviews.get(0).getRating()));
+    }
 }

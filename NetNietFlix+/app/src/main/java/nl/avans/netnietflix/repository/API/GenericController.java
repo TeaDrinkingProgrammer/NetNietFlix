@@ -8,15 +8,13 @@ import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
-import nl.avans.netnietflix.domain.DetailedMediaItem;
-import nl.avans.netnietflix.domain.MediaItemResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public abstract class GenericMediaItemController<T> implements Callback<T> {
+public abstract class GenericController<T> implements Callback<T> {
     protected final String TAG = this.getClass().getSimpleName();
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String BASE_POSTER_PATH_URL = "https://image.tmdb.org/t/p/w500/";
@@ -28,7 +26,7 @@ public abstract class GenericMediaItemController<T> implements Callback<T> {
     protected Gson gson;
     protected API api;
 
-    public GenericMediaItemController() {
+    public GenericController() {
         this.context = context;
 
         gson = new GsonBuilder()

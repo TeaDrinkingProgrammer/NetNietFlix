@@ -2,7 +2,6 @@ package nl.avans.netnietflix.ui.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.avans.netnietflix.applogic.DataManager;
-import nl.avans.netnietflix.repository.API.DetailMediaItemController;
-import nl.avans.netnietflix.repository.API.TopRatedMediaItemController;
 import nl.avans.netnietflix.ui.DetailActivity;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.MediaItem;
@@ -68,6 +65,7 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> 
                 DetailActivity detailActivity = new DetailActivity();
                 DataManager dataManager = new DataManager();
                 dataManager.getMediaItemDetails(detailActivity,mediaItem.getId());
+                dataManager.getReviewForMovieId(detailActivity,mediaItem.getId());
                 Intent intent = new Intent(context,detailActivity.getClass());
                 intent.putExtra(INTENT_EXTRA_MEDIA_ITEM, (Serializable) mediaItems.get(position));
                 context.startActivity(intent);
