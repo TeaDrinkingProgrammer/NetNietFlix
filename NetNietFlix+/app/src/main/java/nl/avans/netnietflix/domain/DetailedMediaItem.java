@@ -1,9 +1,14 @@
 package nl.avans.netnietflix.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "DetailedMediaItem")
 public class DetailedMediaItem extends MediaItem{
     @SerializedName("runtime")
     private String watchTime;

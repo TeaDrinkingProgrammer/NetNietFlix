@@ -1,10 +1,17 @@
 package nl.avans.netnietflix.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "Review")
 public class Review {
+    @PrimaryKey
+    @NonNull
     @SerializedName("author")
     private String author;
     @SerializedName("rating")
@@ -13,6 +20,7 @@ public class Review {
     private AuthorDetails authorDetails;
     @SerializedName("content")
     private String content;
+    private int mediaItemId;
 
     public Review(String author, double rating, String content) {
         this.author = author;

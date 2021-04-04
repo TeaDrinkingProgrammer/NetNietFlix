@@ -1,6 +1,9 @@
 package nl.avans.netnietflix.domain;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,7 +11,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "MediaItem")
 public class MediaItem implements Serializable {
+    @SerializedName("id")
+    @PrimaryKey
+    @NonNull
+    private Integer id;
     @SerializedName("poster_path")
     private String imgLink;
     @SerializedName("overview")
@@ -17,8 +25,6 @@ public class MediaItem implements Serializable {
     private String releaseDate;
     @SerializedName("genre_ids")
     private List<Integer> genreIds = new ArrayList<Integer>();
-    @SerializedName("id")
-    private Integer id;
     @SerializedName("original_title")
     private String originalTitle;
     @SerializedName("original_language")
@@ -35,6 +41,7 @@ public class MediaItem implements Serializable {
     private Boolean video;
     @SerializedName("vote_average")
     private Double voteAverage;
+    private MediaItemType mediaItemType;
 
     public MediaItem(String posterPath, String overview, String releaseDate, List<Integer> genreIds, Integer id,
                      String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity,
@@ -156,6 +163,18 @@ public class MediaItem implements Serializable {
 
     public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
+    }
+
+    public MediaItemType getMediaItemType() {
+        return mediaItemType;
+    }
+
+    public void setMediaItemType(MediaItemType mediaItemType) {
+        this.mediaItemType = mediaItemType;
+    }
+
+    public enum MediaItemType{
+        trending,topRated
     }
 //    @SerializedName("original_name")
 //    private String title;

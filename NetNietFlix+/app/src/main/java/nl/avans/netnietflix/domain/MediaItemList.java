@@ -1,12 +1,19 @@
 package nl.avans.netnietflix.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "MediaItemList")
 public class MediaItemList {
     @SerializedName("name")
     private String name;
     @SerializedName("poster_path")
     private String posterPath;
+    @PrimaryKey
+    @NonNull
     @SerializedName("id")
     private int id;
     @SerializedName("description")
