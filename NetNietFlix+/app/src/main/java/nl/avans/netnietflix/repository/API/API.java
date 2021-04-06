@@ -27,4 +27,8 @@ public interface API {
 
     @GET("account/{accountId}/lists")
     Call<APIResponse<MediaItemList>> getMediaItemLists(@Path("accountId") int id, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
+
+    @GET("search/movie")
+    Call<APIResponse<MediaItem>> getMediaItemSearch(@Query("api_key") String apiKey, @Query("query") String query);
+
 }

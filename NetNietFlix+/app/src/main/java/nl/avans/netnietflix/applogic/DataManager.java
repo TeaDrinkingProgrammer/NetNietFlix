@@ -29,4 +29,7 @@ public class DataManager {
     public void getMediaItemLists(MediaItemListController.MediaItemListListener mediaItemListListener){
         dataController.getMediaItemLists(mediaItemListListener);
     }
+    public void getSearchResults(MediaItemControllerListener listener, String query) {
+        dataController.getSearchResults(listener, query);
+    }
 }

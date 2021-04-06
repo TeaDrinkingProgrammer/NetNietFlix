@@ -8,6 +8,7 @@ import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 import nl.avans.netnietflix.repository.API.MediaItemListController;
 import nl.avans.netnietflix.repository.API.ReviewController;
+import nl.avans.netnietflix.repository.API.SearchController;
 import nl.avans.netnietflix.repository.API.TopRatedController;
 import nl.avans.netnietflix.repository.API.TrendingController;
 
@@ -38,7 +39,12 @@ public class DataController{
         MediaItemListController  mediaItemListController = new MediaItemListController(mediaItemListListener);
         mediaItemListController.getMediaItemLists();
     }
+    public void getSearchResults(MediaItemControllerListener listener, String query) {
+        SearchController apiController = new SearchController(listener);
+        apiController.getSearchResults(query);
+    }
     public boolean isConnected() {
+
         try {
             String command = "ping -c 1 api.themoviedb.org";
             return Runtime.getRuntime().exec(command).waitFor() == 0;
