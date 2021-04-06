@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,16 +35,16 @@ public class SearchFragment extends Fragment {
         searchViewModel =
                 new ViewModelProvider(this).get(SearchViewModel.class);
 
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_search, container, false);
 
         searchRecyclerview = root.findViewById(R.id.search_recycler_view);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false);
-            searchRecyclerview.setLayoutManager(linearLayoutManager);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 3, GridLayoutManager.HORIZONTAL, false);
+            searchRecyclerview.setLayoutManager(gridLayoutManager);
             Log.d(TAG, "linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 5, GridLayoutManager.HORIZONTAL, false);
             searchRecyclerview.setLayoutManager(gridLayoutManager);
             Log.d(TAG, "gridLayoutManager is used");
         }
