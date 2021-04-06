@@ -38,16 +38,16 @@ public class DataController{
         MediaItemListController  mediaItemListController = new MediaItemListController(mediaItemListListener);
         mediaItemListController.getMediaItemLists();
     }
-    public boolean isConnected() {
-        try {
-            String command = "ping -c 1 api.themoviedb.org";
-            return Runtime.getRuntime().exec(command).waitFor() == 0;
-        } catch (InterruptedException ie) {
-            Log.d(TAG, "Error while checking connection: IO Exception:" + ie.getStackTrace());
-        } catch (IOException io) {
-            Log.d(TAG, "Error while checking connection: IO Exception:" + io.getStackTrace());
-        }
-        return false;
-    }
+//    public boolean isConnected() {
+//        try {
+//            String command = "ping -c 1 api.themoviedb.org";
+//            return Runtime.getRuntime().exec(command).waitFor() == 0;
+//        } catch (InterruptedException ie) {
+//            Log.d(TAG, "Error while checking connection: IO Exception:" + ie.getStackTrace());
+//        } catch (IOException io) {
+//            Log.d(TAG, "Error while checking connection: IO Exception:" + io.getStackTrace());
+//        }
+//        return false;
+//    }
 
     }
