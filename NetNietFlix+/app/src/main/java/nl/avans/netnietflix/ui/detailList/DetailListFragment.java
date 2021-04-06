@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui.ListUI;
+package nl.avans.netnietflix.ui.detailList;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,18 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import nl.avans.netnietflix.R;
 
-public class ListFragment extends Fragment {
+public class DetailListFragment extends Fragment {
 
-    private ListViewModel listViewModel;
-
+    private DetailListViewModel detailListViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        listViewModel =
-                new ViewModelProvider(this).get(ListViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        listViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        detailListViewModel =
+                new ViewModelProvider(this).get(DetailListViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        final TextView textView = root.findViewById(R.id.text_notifications);
+        detailListViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

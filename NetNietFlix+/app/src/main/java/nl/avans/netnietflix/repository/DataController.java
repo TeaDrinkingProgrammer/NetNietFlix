@@ -2,13 +2,10 @@ package nl.avans.netnietflix.repository;
 
 import android.util.Log;
 
-import java.io.IOException;
-
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
-import nl.avans.netnietflix.repository.API.MediaItemListController;
+import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
 import nl.avans.netnietflix.repository.API.ReviewController;
-import nl.avans.netnietflix.repository.API.SearchController;
 import nl.avans.netnietflix.repository.API.TopRatedController;
 import nl.avans.netnietflix.repository.API.TrendingController;
 
@@ -35,25 +32,20 @@ public class DataController{
         ReviewController reviewController = new ReviewController(reviewListener);
         reviewController.getReviewDetails(mediaItemId);
     }
-    public void getMediaItemLists(MediaItemListController.MediaItemListListener mediaItemListListener){
-        MediaItemListController  mediaItemListController = new MediaItemListController(mediaItemListListener);
-        mediaItemListController.getMediaItemLists();
+    public void getMediaItemLists(AllMediaItemListsController.MediaItemListListener mediaItemListListener){
+        AllMediaItemListsController allMediaItemListsController = new AllMediaItemListsController(mediaItemListListener);
+        allMediaItemListsController.getMediaItemLists();
     }
-    public void getSearchResults(MediaItemControllerListener listener, String query) {
-        SearchController apiController = new SearchController(listener);
-        apiController.getSearchResults(query);
-    }
-    public boolean isConnected() {
-
-        try {
-            String command = "ping -c 1 api.themoviedb.org";
-            return Runtime.getRuntime().exec(command).waitFor() == 0;
-        } catch (InterruptedException ie) {
-            Log.d(TAG, "Error while checking connection: IO Exception:" + ie.getStackTrace());
-        } catch (IOException io) {
-            Log.d(TAG, "Error while checking connection: IO Exception:" + io.getStackTrace());
-        }
-        return false;
-    }
+//    public boolean isConnected() {
+//        try {
+//            String command = "ping -c 1 api.themoviedb.org";
+//            return Runtime.getRuntime().exec(command).waitFor() == 0;
+//        } catch (InterruptedException ie) {
+//            Log.d(TAG, "Error while checking connection: IO Exception:" + ie.getStackTrace());
+//        } catch (IOException io) {
+//            Log.d(TAG, "Error while checking connection: IO Exception:" + io.getStackTrace());
+//        }
+//        return false;
+//    }
 
     }
