@@ -31,4 +31,7 @@ public interface API {
     @GET("search/movie")
     Call<APIResponse<MediaItem>> getMediaItemSearch(@Query("api_key") String apiKey, @Query("query") String query);
 
+    @GET("list/{listId}")
+    Call<APIResponse<MediaItemList>> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
+
 }
