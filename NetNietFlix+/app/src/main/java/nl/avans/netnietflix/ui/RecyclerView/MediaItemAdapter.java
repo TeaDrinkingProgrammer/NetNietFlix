@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.ui.DetailActivity;
@@ -71,7 +73,12 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> 
                 context.startActivity(intent);
             }
         });
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItem.getImgLink()).resize(350,500).into(holder.mediaListItemImage);
+        if(mediaItem.getImgLink() != null){
+//            holder.mediaListItemImage.setImageResource(R.drawable.not_found);
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + mediaItem.getImgLink()).resize(350,500).into(holder.mediaListItemImage);
+        } else{
+            holder.mediaListItemNoImageText.setText(mediaItem.getTitle());
+        }
     }
     public void setMediaItems(List<MediaItem> mediaItems){
         Log.d(TAG, "setMovieList");
