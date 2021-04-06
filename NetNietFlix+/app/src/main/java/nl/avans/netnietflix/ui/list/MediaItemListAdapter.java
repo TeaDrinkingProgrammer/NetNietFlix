@@ -15,9 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
-import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItemList;
-import nl.avans.netnietflix.ui.detailList.DetailListViewModel;
+import nl.avans.netnietflix.ui.detailList.DetailListActivity;
 
 public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListViewHolder> implements Serializable {
     private final String TAG = getClass().getSimpleName();
@@ -59,11 +58,8 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
                 //Als er op de viewholder geklikt wordt, wordt de gebruiker doorgestuurd naar de detailpagina
                 //MediaItemList wordt hier gecast als Serializable om hem te kunnen passen met de intent.
                 Log.d(TAG,"onClick is called");
-                DetailListViewModel detailActivity = new DetailListViewModel();
-                DataManager dataManager = new DataManager();
-                dataManager.getMediaItemLists(detailActivity);
-                Intent intent = new Intent(context,detailActivity.getClass());
-                intent.putExtra(INTENT_EXTRA_MEDIA_ITEM, (Serializable) MediaItemLists.get(position));
+                Intent intent = new Intent(context, DetailListActivity.class);
+                intent.putExtra("id",mediaItemListListItem.getId());
                 context.startActivity(intent);
             }
         });

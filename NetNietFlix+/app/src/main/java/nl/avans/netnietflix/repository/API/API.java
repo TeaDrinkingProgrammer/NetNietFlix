@@ -1,5 +1,6 @@
 package nl.avans.netnietflix.repository.API;
 
+import nl.avans.netnietflix.domain.DetailMediaItemList;
 import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.APIResponse;
 import nl.avans.netnietflix.domain.MediaItem;
@@ -32,6 +33,6 @@ public interface API {
     Call<APIResponse<MediaItem>> getMediaItemSearch(@Query("api_key") String apiKey, @Query("query") String query);
 
     @GET("list/{listId}")
-    Call<APIResponse<MediaItemList>> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
+    Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
 
 }
