@@ -22,16 +22,18 @@ public class SearchViewModel extends ViewModel implements MediaItemControllerLis
         dataManager = new DataManager();
     }
 
-    public LiveData<List<MediaItem>> getSearchMediaItems(String query){
+    public LiveData<List<MediaItem>> getSearchMediaItems(){
         Log.d(TAG,"getMediaItems is executed");
         if(searchMediaItems == null){
             searchMediaItems = new MutableLiveData<>();
-            loadSearchMediaItems(this, query);
         }
         return searchMediaItems;
     }
+    public void loadSearchMediaItems(String query){
+        localLoadSearchMediaItems(this,query);
+    }
 
-    private void loadSearchMediaItems(MediaItemControllerListener listener, String query){
+    private void localLoadSearchMediaItems(MediaItemControllerListener listener, String query){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadSearchMediaItems");
         dataManager.getSearchResults(listener, query);

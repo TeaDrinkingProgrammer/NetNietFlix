@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="nl.avans.netnietflix.ui.list.ListFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_list"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="nl.avans.netnietflix.ui.SearchUI.SearchFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 </navigation>

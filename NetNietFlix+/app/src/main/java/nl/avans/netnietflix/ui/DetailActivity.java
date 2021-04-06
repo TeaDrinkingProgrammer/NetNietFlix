@@ -74,7 +74,5 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
 
     @Override
     public void onReviewsAvailable(List<Review> reviews) {
-       Log.d(TAG,reviews.get(0).getContent());
-       Log.d(TAG,String.valueOf(reviews.get(0).getRating()));
     }
 }
