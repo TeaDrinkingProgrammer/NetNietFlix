@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui.ListUI;
+package nl.avans.netnietflix.ui.list;
 
 import android.util.Log;
 
@@ -10,9 +10,9 @@ import java.util.List;
 
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItemList;
-import nl.avans.netnietflix.repository.API.MediaItemListController;
+import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
 
-public class ListViewModel extends ViewModel implements MediaItemListController.MediaItemListListener {
+public class ListViewModel extends ViewModel implements AllMediaItemListsController.MediaItemListListener {
 
     private MutableLiveData<String> mText;
     private final String TAG = this.getClass().getSimpleName();

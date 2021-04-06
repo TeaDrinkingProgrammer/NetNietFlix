@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui.ListUI;
+package nl.avans.netnietflix.ui.list;
 
 import android.util.Log;
 import android.view.View;

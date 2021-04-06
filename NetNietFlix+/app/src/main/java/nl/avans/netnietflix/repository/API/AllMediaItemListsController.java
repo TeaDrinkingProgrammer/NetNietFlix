@@ -11,10 +11,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MediaItemListController extends GenericController<APIResponse<MediaItemList>> implements Callback<APIResponse<MediaItemList>> {
+public class AllMediaItemListsController extends GenericController<APIResponse<MediaItemList>> implements Callback<APIResponse<MediaItemList>> {
 
     private MediaItemListListener listener;
-    public MediaItemListController(MediaItemListListener listener){
+    public AllMediaItemListsController(MediaItemListListener listener){
         this.listener = listener;
     }
 

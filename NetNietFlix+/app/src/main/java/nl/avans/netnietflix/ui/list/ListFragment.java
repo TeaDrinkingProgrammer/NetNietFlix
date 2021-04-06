@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui.ListUI;
+package nl.avans.netnietflix.ui.list;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
@@ -23,39 +24,31 @@ public class ListFragment extends Fragment {
 
     private ListViewModel listViewModel;
     private MediaItemListAdapter recyclerViewAdapter;
+    private RecyclerView recyclerView;
+    private final String TAG = this.getClass().getSimpleName();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         listViewModel =
                 new ViewModelProvider(this).get(ListViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-
-        recyclerView = root.findViewById(R.id.trending_recycler_view);
+        View root = inflater.inflate(R.layout.fragment_list, container, false);
+        recyclerView = root.findViewById(R.id.list_recycler_view);
 
         //Maakt 2 layoutmanagers
 
         //Bij portretoriëntatie, kies normale layout, bij landschap gridlayout
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(linearLayoutManager);
             Log.d(TAG, "linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(gridLayoutManager);
             Log.d(TAG, "gridLayoutManager is used");
         }
-
-        recyclerViewAdapter = new MediaItemAdapter(this.getContext());
-        recyclerView.setAdapter(trendingMoviesAdapter);
-
-        listViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        recyclerViewAdapter = new MediaItemListAdapter(this.getContext());
+        recyclerView.setAdapter(recyclerViewAdapter);
         return root;
     }
 }

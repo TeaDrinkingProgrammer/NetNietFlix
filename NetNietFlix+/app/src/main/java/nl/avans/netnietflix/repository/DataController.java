@@ -2,11 +2,9 @@ package nl.avans.netnietflix.repository;
 
 import android.util.Log;
 
-import java.io.IOException;
-
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
-import nl.avans.netnietflix.repository.API.MediaItemListController;
+import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
 import nl.avans.netnietflix.repository.API.ReviewController;
 import nl.avans.netnietflix.repository.API.TopRatedController;
 import nl.avans.netnietflix.repository.API.TrendingController;
@@ -34,9 +32,9 @@ public class DataController{
         ReviewController reviewController = new ReviewController(reviewListener);
         reviewController.getReviewDetails(mediaItemId);
     }
-    public void getMediaItemLists(MediaItemListController.MediaItemListListener mediaItemListListener){
-        MediaItemListController  mediaItemListController = new MediaItemListController(mediaItemListListener);
-        mediaItemListController.getMediaItemLists();
+    public void getMediaItemLists(AllMediaItemListsController.MediaItemListListener mediaItemListListener){
+        AllMediaItemListsController allMediaItemListsController = new AllMediaItemListsController(mediaItemListListener);
+        allMediaItemListsController.getMediaItemLists();
     }
 //    public boolean isConnected() {
 //        try {

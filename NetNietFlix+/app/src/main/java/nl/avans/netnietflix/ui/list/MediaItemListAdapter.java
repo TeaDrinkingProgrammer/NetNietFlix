@@ -1,4 +1,4 @@
-package nl.avans.netnietflix.ui.ListUI;
+package nl.avans.netnietflix.ui.list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -43,7 +41,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
         Log.d(TAG,"onCreateViewholder is called");
         Context context = parent.getContext();
         //Het id van het listitem wordt opgevraagd en "gemaakt" dus echt gecreate
-        int layoutIdForListItem = R.layout.MediaItemList_list_item;
+        int layoutIdForListItem = R.layout.list_list_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
         View view = inflater.inflate(layoutIdForListItem, parent,shouldAttachToParentImmediately);
