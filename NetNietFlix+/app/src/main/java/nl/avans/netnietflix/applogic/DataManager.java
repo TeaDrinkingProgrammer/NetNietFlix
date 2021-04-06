@@ -1,5 +1,6 @@
 package nl.avans.netnietflix.applogic;
 
+import nl.avans.netnietflix.repository.API.DetailMediaItemListController;
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
@@ -31,5 +32,8 @@ public class DataManager {
     }
     public void getSearchResults(MediaItemControllerListener listener, String query) {
         dataController.getSearchResults(listener, query);
+    }
+    public void getDetailItemList(DetailMediaItemListController.DetailMediaItemListListener mediaItemListListener, int listId){
+        dataController.getDetailMediaItemList(mediaItemListListener,listId);
     }
 }
