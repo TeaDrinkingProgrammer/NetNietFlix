@@ -52,7 +52,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
     public void onBindViewHolder(@NonNull MediaItemListViewHolder holder, int position) {
         //Hier wordt de data in de viewholder gezet
         Log.d(TAG,"onBindViewHolder is called");
-        MediaItemList MediaItemList = MediaItemLists.get(position);
+        MediaItemList mediaItemListListItem = MediaItemLists.get(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +67,9 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
                 context.startActivity(intent);
             }
         });
+        holder.name.setText(mediaItemListListItem.getName());
+        holder.description.setText(mediaItemListListItem.getDescription());
+        holder.numberOfItems.setText(String.valueOf(mediaItemListListItem.getItemCount()));
     }
     public void setMediaItemLists(List<MediaItemList> MediaItemLists){
         Log.d(TAG, "setMovieList");

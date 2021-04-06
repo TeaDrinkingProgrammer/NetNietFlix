@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:padding="12sp"
         android:textSize="23sp"
-        android:text="Trending"
+        android:text="Lists:"
         android:textStyle="bold"
         android:layout_alignParentTop="true" />
 <androidx.recyclerview.widget.RecyclerView

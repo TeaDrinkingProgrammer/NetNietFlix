@@ -17,7 +17,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import nl.avans.netnietflix.R;
+import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.domain.MediaItemList;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
 public class ListFragment extends Fragment {
@@ -49,6 +53,14 @@ public class ListFragment extends Fragment {
         }
         recyclerViewAdapter = new MediaItemListAdapter(this.getContext());
         recyclerView.setAdapter(recyclerViewAdapter);
+
+        listViewModel.getMediaItemLists().observe(getViewLifecycleOwner(), new Observer<List<MediaItemList>>() {
+            @Override
+            public void onChanged(@Nullable List<MediaItemList> mediaItemLists) {
+                Log.d(TAG, "onChanged");
+                recyclerViewAdapter.setMediaItemLists(mediaItemLists);
+            }
+        });
         return root;
     }
 }
