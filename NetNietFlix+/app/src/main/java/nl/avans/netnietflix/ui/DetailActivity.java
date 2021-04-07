@@ -34,6 +34,10 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private TextView mReleaseDate;
     private TextView mWatchtime;
     private TextView ProgressLabel;
+    private TextView mReviewTitle1;
+    private TextView mReviewDescription1;
+    private TextView mReviewTitle2;
+    private TextView mReviewDescription2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,10 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         mRating = (TextView) findViewById(R.id.media_item_rating);
         mReleaseDate = (TextView) findViewById(R.id.media_item_release_date);
         mWatchtime = (TextView) findViewById(R.id.media_item_watchtime);
-
+        mReviewTitle1 = (TextView) findViewById(R.id.media_item_review_title_1);
+        mReviewDescription1 = (TextView) findViewById(R.id.media_item_review_description_1);
+        mReviewTitle2 = (TextView) findViewById(R.id.media_item_review_title_2);
+        mReviewDescription2 = (TextView) findViewById(R.id.media_item_review_description_2);
         SeekBar seekBar = findViewById(R.id.media_item_seekbar);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
         double progress = seekBar.getProgress();
@@ -90,6 +97,17 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
 
     @Override
     public void onReviewsAvailable(List<Review> reviews) {
+        if(reviews.size() > 0){
+            Review review = reviews.get(0);
+            mReviewTitle1.setText("A review by " + review.getAuthor() + " | " + review.getRating());
+            mReviewDescription1.setText(review.getContent());
+            if(reviews.size() > 1){
+                Review review2 = reviews.get(1);
+                mReviewTitle2.setText("A review by " + review2.getAuthor() + " | " + review2.getRating());
+                mReviewDescription2.setText(review2.getContent());
+            }
+        }
+
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
