@@ -56,9 +56,9 @@ public class HomeFragment extends Fragment {
             watchLaterRecyclerview.setLayoutManager(linearLayoutManager3);
             Log.d(TAG, "linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
-            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
-            GridLayoutManager gridLayoutManager3 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(), 1, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager3 = new GridLayoutManager(root.getContext(), 1, GridLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(gridLayoutManager);
             topRatedRecyclerview.setLayoutManager(gridLayoutManager2);
             watchLaterRecyclerview.setLayoutManager(gridLayoutManager3);

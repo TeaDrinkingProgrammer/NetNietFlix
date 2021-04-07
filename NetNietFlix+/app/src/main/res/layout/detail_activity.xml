@@ -158,6 +158,7 @@
 
 
         <LinearLayout
+            android:id="@+id/review_linearlayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -187,6 +188,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/review_linearlayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

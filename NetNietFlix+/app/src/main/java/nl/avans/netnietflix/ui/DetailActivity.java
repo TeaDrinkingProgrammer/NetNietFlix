@@ -158,7 +158,12 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 Review review2 = reviews.get(1);
                 mReviewTitle2.setText("A review by " + review2.getAuthor() + " | " + review2.getRating());
                 mReviewDescription2.setText(review2.getContent());
+            } else {
+                findViewById(R.id.review_linearlayout2).setVisibility(View.INVISIBLE);
             }
+        } else {
+            findViewById(R.id.review_linearlayout1).setVisibility(View.INVISIBLE);
+            findViewById(R.id.review_linearlayout2).setVisibility(View.INVISIBLE);
         }
 
     }
