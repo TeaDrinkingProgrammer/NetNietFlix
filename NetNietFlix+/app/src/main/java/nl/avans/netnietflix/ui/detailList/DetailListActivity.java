@@ -55,7 +55,6 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
             Log.d(TAG, "gridLayoutManager is used");
         }
         detailListRecyclerview.setAdapter(detailListMoviesAdapter);
-        //TODO Proper back button
         name = (TextView) findViewById(R.id.media_item_list_name) ;
         description = (TextView) findViewById(R.id.media_item_list_description) ;
         Intent intent = getIntent();
