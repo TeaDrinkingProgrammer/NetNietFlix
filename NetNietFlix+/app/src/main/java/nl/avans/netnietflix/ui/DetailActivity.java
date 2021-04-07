@@ -110,7 +110,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
 
     @Override
     public void onPost(Boolean isSuccessful) {
-        String toast_msg = Resources.getSystem().getString(R.string.rating_added);
+        String toast_msg = this.getResources().getString(R.string.rating_added);
         Toast.makeText(this, toast_msg, Toast.LENGTH_SHORT).show();
     }
 

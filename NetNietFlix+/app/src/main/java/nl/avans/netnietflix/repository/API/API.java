@@ -10,7 +10,10 @@ import nl.avans.netnietflix.domain.Review;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -42,8 +45,9 @@ public interface API {
     @POST("list/{listId}/add_item")
     Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
+    @FormUrlEncoded
     @POST("movie/{movie_id}/rating")
-    Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Body double rating, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
+    Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Field("value") double value, @Query("api_key") String apiKey, @Query("session_id") String sessionId, @Query("guest_session_id") String guestSessionId);
 
     @DELETE("list/{listId}")
     Call<PostResponse> removeList(@Path("listId") int listId, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
