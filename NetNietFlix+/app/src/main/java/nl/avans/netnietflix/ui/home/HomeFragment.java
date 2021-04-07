@@ -28,8 +28,10 @@ public class HomeFragment extends Fragment {
     private final String SAVED_CHARACTER_LIST = "characterList";
     private RecyclerView trendingRecyclerview;
     private RecyclerView topRatedRecyclerview;
+    private RecyclerView watchLaterRecyclerview;
     private MediaItemAdapter trendingMoviesAdapter;
     private MediaItemAdapter topRatedMoviesAdapter;
+    private MediaItemAdapter watchLaterAdapter;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,6 +42,7 @@ public class HomeFragment extends Fragment {
 
         trendingRecyclerview = root.findViewById(R.id.trending_recycler_view);
         topRatedRecyclerview = root.findViewById(R.id.top_rated_recycler_view);
+        watchLaterRecyclerview = root.findViewById(R.id.watch_later_recycler_view);
 
         //Maakt 2 layoutmanagers
 
@@ -47,22 +50,28 @@ public class HomeFragment extends Fragment {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
             LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
+            LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(linearLayoutManager);
             topRatedRecyclerview.setLayoutManager(linearLayoutManager2);
+            watchLaterRecyclerview.setLayoutManager(linearLayoutManager3);
             Log.d(TAG, "linearLayoutManager is used");
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
             GridLayoutManager gridLayoutManager2 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+            GridLayoutManager gridLayoutManager3 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(gridLayoutManager);
             topRatedRecyclerview.setLayoutManager(gridLayoutManager2);
+            watchLaterRecyclerview.setLayoutManager(gridLayoutManager2);
             Log.d(TAG, "gridLayoutManager is used");
         }
 
         trendingMoviesAdapter = new MediaItemAdapter(this.getContext());
         topRatedMoviesAdapter = new MediaItemAdapter(this.getContext());
+        watchLaterAdapter = new MediaItemAdapter(this.getContext());
 
         trendingRecyclerview.setAdapter(trendingMoviesAdapter);
         topRatedRecyclerview.setAdapter(topRatedMoviesAdapter);
+        watchLaterRecyclerview.setAdapter(watchLaterAdapter);
 
         homeViewModel.getTrendingMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
             @Override
@@ -77,6 +86,13 @@ public class HomeFragment extends Fragment {
             public void onChanged(@Nullable List<MediaItem> mediaItems) {
                 Log.d(TAG, "onChanged");
                 topRatedMoviesAdapter.setMediaItems(mediaItems);
+            }
+        });
+        homeViewModel.getWatchLaterMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
+            @Override
+            public void onChanged(@Nullable List<MediaItem> mediaItems) {
+                Log.d(TAG, "onChanged");
+                watchLaterAdapter.setMediaItems(mediaItems);
             }
         });
 

@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.Locale;
 
 import nl.avans.netnietflix.applogic.DataManager;
+import nl.avans.netnietflix.domain.DetailMediaItemList;
 import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.repository.API.DetailMediaItemListController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 
-public class HomeViewModel extends ViewModel implements MediaItemControllerListener {
+public class HomeViewModel extends ViewModel implements MediaItemControllerListener, DetailMediaItemListController.DetailMediaItemListListener {
 
     private MutableLiveData<List<MediaItem>> trendingMediaItems = null;
     private MutableLiveData<List<MediaItem>> topRatedMediaItems = null;
+    private MutableLiveData<List<MediaItem>> watchLaterMediaItems = null;
     private String TAG = this.getClass().getSimpleName();
     private DataManager dataManager;
 
@@ -24,6 +27,14 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
          dataManager = new DataManager();
     }
 
+    public LiveData<List<MediaItem>> getWatchLaterMediaItems(){
+        Log.d(TAG,"getMediaItems is executed");
+        if(watchLaterMediaItems == null){
+            watchLaterMediaItems = new MutableLiveData<>();
+            loadWatchLaterMediaItems(this);
+        }
+        return watchLaterMediaItems;
+    }
     public LiveData<List<MediaItem>> getTrendingMediaItems(){
         Log.d(TAG,"getMediaItems is executed");
         if(trendingMediaItems == null){
@@ -52,6 +63,11 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
         Log.d(TAG, "loadMediaItems");
         dataManager.loadTopRatedMediaItems(listener);
     }
+    private void loadWatchLaterMediaItems(DetailMediaItemListController.DetailMediaItemListListener listener){
+        // Do an asynchronous operation to fetch movies
+        Log.d(TAG, "loadMediaItems");
+        dataManager.getDetailItemList(listener,7088811);
+    }
 
     @Override
     public void onMediaItemsAvailable(List<MediaItem> mediaItems, int id) {
@@ -61,5 +77,10 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
         } else{
             this.topRatedMediaItems.setValue((List<MediaItem>) mediaItems);
         }
+    }
+
+    @Override
+    public void onDetailMediaItemListAvailable(DetailMediaItemList mediaItemList) {
+        this.watchLaterMediaItems.setValue(mediaItemList.getMediaItemList());
     }
 }
