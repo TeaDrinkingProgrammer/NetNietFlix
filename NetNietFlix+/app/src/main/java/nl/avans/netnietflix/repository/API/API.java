@@ -42,8 +42,9 @@ public interface API {
     @GET("list/{listId}")
     Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey,@Query("language") String language);
 
+    @FormUrlEncoded
     @POST("list/{listId}/add_item")
-    Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
+    Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Field("media_item") int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
     @FormUrlEncoded
     @POST("movie/{movie_id}/rating")

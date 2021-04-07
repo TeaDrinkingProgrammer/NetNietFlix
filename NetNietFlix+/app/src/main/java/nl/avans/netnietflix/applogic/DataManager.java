@@ -50,4 +50,8 @@ public class DataManager {
     public void removeMediaItemFromList(RemoveListItemController.RemoveMediaItemFromListListener listener, int listId, int media_id){
         dataController.removeItemFromList(listener, listId, media_id);
     }
+
+    public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId, int mediaItemId) {
+        dataController.addMediaItemToList(listener,listId,mediaItemId);
+    }
 }

@@ -70,6 +70,10 @@ public class DataController{
         RemoveListItemController removeListItemController = new RemoveListItemController(listener);
         removeListItemController.removeMediaItemFromList(listId, media_id);
     }
+    public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId, int mediaItemId) {
+        AddMediaItemToListController addMediaItemToListController = new AddMediaItemToListController(listener);
+        addMediaItemToListController.addMediaItemToList(listId, mediaItemId);
+    }
 
     private String getLanguage(){
         return Locale.getDefault().getLanguage();
