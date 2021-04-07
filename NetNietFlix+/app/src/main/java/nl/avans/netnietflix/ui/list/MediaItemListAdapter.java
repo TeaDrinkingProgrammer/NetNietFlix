@@ -64,8 +64,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
             }
         });
         holder.name.setText(mediaItemListListItem.getName());
-        holder.description.setText(mediaItemListListItem.getDescription());
-        holder.numberOfItems.setText(String.valueOf(mediaItemListListItem.getItemCount()));
+        holder.numberOfItems.setText("Items "+ String.valueOf(mediaItemListListItem.getItemCount()));
     }
     public void setMediaItemLists(List<MediaItemList> MediaItemLists){
         Log.d(TAG, "setMovieList");

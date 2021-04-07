@@ -20,7 +20,7 @@ public class MediaItemListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         Log.d(TAG,"Constructor is called");
         name = itemView.findViewById(R.id.list_list_item_name);
-        description = itemView.findViewById(R.id.list_list_item_description);
+        //description = itemView.findViewById(R.id.list_list_item_description);
         numberOfItems = itemView.findViewById(R.id.list_list_item_num);
     }
 }

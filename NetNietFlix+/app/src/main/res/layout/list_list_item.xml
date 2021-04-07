@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/customborder"
+    android:layout_marginVertical="15dp"
+    >
 
-    <TextView
-        android:id="@+id/list_list_item_name"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="12sp"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/list_list_item_name"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list_list_item_description"
-        android:textSize="15sp"
-        android:padding="12sp"
-        android:layout_below="@id/list_list_item_name"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/list_list_item_num"
         android:textSize="15sp"
-        android:padding="12sp"
-        android:layout_below="@id/list_list_item_description"/>
 
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/list_list_item_delete"-->
-<!--        android:drawableRight="@drawable/ic_baseline_delete_24"/>-->
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/list_list_item_share"-->
-<!--        android:drawableRight="@drawable/ic_baseline_share_24"/>-->
-</RelativeLayout>
+        />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/list_list_item_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:iconTint="#1248D1" />
+
+    <Button
+        android:id="@+id/list_list_item_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:iconTint="#E50914" />
+
+
+</LinearLayout>
