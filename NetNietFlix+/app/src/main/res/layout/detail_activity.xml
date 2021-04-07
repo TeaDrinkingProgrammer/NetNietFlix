@@ -34,7 +34,6 @@
             android:textStyle="bold"
             android:paddingHorizontal="30dp"
             android:paddingTop="15dp"
-            android:textColor="@color/black"
             />
 
         <ImageView
@@ -94,7 +93,6 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/rating_title"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
             android:paddingBottom="15dp"
@@ -141,7 +139,6 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/review_title"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
             android:paddingVertical="15dp"
@@ -165,7 +162,6 @@
             android:id="@+id/media_item_review_title_1"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="@color/black"
             />
 
         <TextView
@@ -195,7 +191,6 @@
                 android:id="@+id/media_item_review_title_2"
                 android:textStyle="bold"
                 android:paddingVertical="15dp"
-                android:textColor="@color/black"
                 />
 
             <TextView
