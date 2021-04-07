@@ -10,6 +10,8 @@ import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
 import nl.avans.netnietflix.repository.API.RatingController;
+import nl.avans.netnietflix.repository.API.RemoveListController;
+import nl.avans.netnietflix.repository.API.RemoveListItemController;
 import nl.avans.netnietflix.repository.API.ReviewController;
 import nl.avans.netnietflix.repository.API.SearchController;
 import nl.avans.netnietflix.repository.API.TopRatedController;
@@ -54,14 +56,19 @@ public class DataController{
         DetailMediaItemListController detailMediaItemListController = new DetailMediaItemListController(mediaItemListListener);
         detailMediaItemListController.getDetailMediaItemList(listId,getLanguage());
     }
-    public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId,int mediaId){
-        AddMediaItemToListController addMediaItemToListController = new AddMediaItemToListController(listener);
-        addMediaItemToListController.addMediaItemToList(listId,mediaId);
+    public void RemoveListController( int listId){
+        RemoveListController removeListController = new RemoveListController();
+        removeListController.removeList(listId);
     }
 
     public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating) {
         RatingController ratingController = new RatingController(listener);
         ratingController.addRatingToMovie(movieId, rating);
+    }
+
+    public void removeItemFromList(RemoveListItemController.RemoveMediaItemFromListListener listener, int listId, int media_id) {
+        RemoveListItemController removeListItemController = new RemoveListItemController(listener);
+        removeListItemController.removeMediaItemFromList(listId, media_id);
     }
 
     private String getLanguage(){

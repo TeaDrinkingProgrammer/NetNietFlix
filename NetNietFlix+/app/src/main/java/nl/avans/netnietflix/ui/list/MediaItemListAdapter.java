@@ -2,6 +2,7 @@ package nl.avans.netnietflix.ui.list;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.avans.netnietflix.R;
+import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItemList;
+import nl.avans.netnietflix.repository.API.RemoveListController;
 import nl.avans.netnietflix.ui.detailList.DetailListActivity;
 
 public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListViewHolder> implements Serializable {
@@ -24,12 +27,14 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
     private List<MediaItemList> MediaItemLists;
     private List<MediaItemList> MediaItemListsOriginal;
     private Context context;
+    private DataManager dataManager;
 
     public MediaItemListAdapter(Context context) {
         //De lijst met MediaItemLists en de context (hier de Mainclass)
         this.context = context;
         MediaItemLists = new ArrayList<MediaItemList>();
         MediaItemListsOriginal = new ArrayList<MediaItemList>();
+        dataManager = new DataManager();
         Log.d(TAG,"Constructor is called");
     }
 
@@ -49,20 +54,27 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
 
     @Override
     public void onBindViewHolder(@NonNull MediaItemListViewHolder holder, int position) {
-        //Hier wordt de data in de viewholder gezet
-        Log.d(TAG,"onBindViewHolder is called");
-        MediaItemList mediaItemListListItem = MediaItemLists.get(position);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Als er op de viewholder geklikt wordt, wordt de gebruiker doorgestuurd naar de detailpagina
-                //MediaItemList wordt hier gecast als Serializable om hem te kunnen passen met de intent.
-                Log.d(TAG,"onClick is called");
-                Intent intent = new Intent(context, DetailListActivity.class);
-                intent.putExtra("id",mediaItemListListItem.getId());
-                context.startActivity(intent);
+                    //Hier wordt de data in de viewholder gezet
+                    Log.d(TAG,"onBindViewHolder is called");
+                    MediaItemList mediaItemListListItem = MediaItemLists.get(position);
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //Als er op de viewholder geklikt wordt, wordt de gebruiker doorgestuurd naar de detailpagina
+                            //MediaItemList wordt hier gecast als Serializable om hem te kunnen passen met de intent.
+                            Log.d(TAG,"onClick is called");
+                            Intent intent = new Intent(context, DetailListActivity.class);
+                            intent.putExtra("id",mediaItemListListItem.getId());
+                            context.startActivity(intent);
             }
         });
+                    holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Log.d(TAG, "onClick is called on deleteButton");
+                            dataManager.removeList(mediaItemListListItem.getId());
+                        }
+                    });
         holder.name.setText(mediaItemListListItem.getName());
         holder.numberOfItems.setText("Items "+ String.valueOf(mediaItemListListItem.getItemCount()));
     }

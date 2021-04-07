@@ -7,14 +7,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RemoveMediaItemFromListController extends GenericController<PostResponse> implements Callback<PostResponse> {
+public class RemoveListItemController extends GenericController<PostResponse> implements Callback<PostResponse> {
 
     private RemoveMediaItemFromListListener listener;
-    public RemoveMediaItemFromListController(RemoveMediaItemFromListListener listener){
+    public RemoveListItemController(RemoveMediaItemFromListListener listener){
         this.listener = listener;
     }
-    public void addMediaItemToList(int listId,int mediaId) {
-        Call<PostResponse> call = api.removeMediaItemFromList(listId,API_KEY,SESSION_ID);
+    public void removeMediaItemFromList(int listId,int media_id) {
+        Call<PostResponse> call = api.removeMediaItemFromList(listId, media_id, API_KEY, SESSION_ID);
         call.enqueue(this);
     }
 

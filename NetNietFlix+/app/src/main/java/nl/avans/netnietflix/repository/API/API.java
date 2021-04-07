@@ -46,5 +46,8 @@ public interface API {
     Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Body int rating, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
     @DELETE("list/{listId}")
-    Call<PostResponse> removeMediaItemFromList(@Path("listId") int listId, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
+    Call<PostResponse> removeList(@Path("listId") int listId, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
+
+    @DELETE("list/{listId}/remove_item")
+    Call<PostResponse> removeMediaItemFromList(@Path("listId") int listId, @Body int media_id, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 }
