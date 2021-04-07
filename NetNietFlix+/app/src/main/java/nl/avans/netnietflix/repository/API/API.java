@@ -37,7 +37,11 @@ public interface API {
 
     @GET("list/{listId}")
     Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
+
     @POST("list/{listId}/add_item")
     Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
+
+    @POST("movie/{movie_id}/rating")
+    Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Body int rating, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
 }

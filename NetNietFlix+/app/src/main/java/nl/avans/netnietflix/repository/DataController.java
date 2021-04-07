@@ -7,6 +7,7 @@ import nl.avans.netnietflix.repository.API.DetailMediaItemListController;
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
 import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
+import nl.avans.netnietflix.repository.API.RatingController;
 import nl.avans.netnietflix.repository.API.ReviewController;
 import nl.avans.netnietflix.repository.API.SearchController;
 import nl.avans.netnietflix.repository.API.TopRatedController;
@@ -54,6 +55,11 @@ public class DataController{
     public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId,int mediaId){
         AddMediaItemToListController addMediaItemToListController = new AddMediaItemToListController(listener);
         addMediaItemToListController.addMediaItemToList(listId,mediaId);
+    }
+
+    public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating) {
+        RatingController ratingController = new RatingController(listener);
+        ratingController.addRatingToMovie(movieId, rating);
     }
 
 
