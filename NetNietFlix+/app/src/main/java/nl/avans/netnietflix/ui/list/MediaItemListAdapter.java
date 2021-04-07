@@ -75,7 +75,6 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
             RemoveListController.RemoveListListener listener2;
             public MediaItemListAdapterOnClickListener(AllMediaItemListsController.MediaItemListListener listener,RemoveListController.RemoveListListener listener2){
                 this.listener = listener;
-                this.listener2 = listener2;
             }
             @Override
             public void onClick(View v) {

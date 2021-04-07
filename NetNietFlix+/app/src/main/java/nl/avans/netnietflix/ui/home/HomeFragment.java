@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
             GridLayoutManager gridLayoutManager3 = new GridLayoutManager(root.getContext(), 2, GridLayoutManager.HORIZONTAL, false);
             trendingRecyclerview.setLayoutManager(gridLayoutManager);
             topRatedRecyclerview.setLayoutManager(gridLayoutManager2);
-            watchLaterRecyclerview.setLayoutManager(gridLayoutManager2);
+            watchLaterRecyclerview.setLayoutManager(gridLayoutManager3);
             Log.d(TAG, "gridLayoutManager is used");
         }
 
