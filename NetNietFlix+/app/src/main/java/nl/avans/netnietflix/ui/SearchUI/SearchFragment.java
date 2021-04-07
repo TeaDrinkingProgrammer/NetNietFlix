@@ -8,7 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,13 +33,14 @@ import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.ui.RecyclerView.MediaItemAdapter;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private String TAG = this.getClass().getSimpleName();
     private SearchViewModel searchViewModel;
     private RecyclerView searchRecyclerview;
     private MediaItemAdapter searchMoviesAdapter;
     private List<MediaItem> localMediaItems = new ArrayList<MediaItem>();
+    private List<MediaItem> resultsMediaItems = new ArrayList<MediaItem>();
     private String query = "shrek";
     private EditText searchText;
 
@@ -83,6 +88,36 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        Spinner spinner = root.findViewById(R.id.spinner_filter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(root.getContext(), R.array.filters, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+//        spinner.setOnItemSelectedListener(this);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
+                int pos = spinner.getSelectedItemPosition();
+
+                switch (pos) {
+                    case 1:
+                        resultsMediaItems.clear();
+                        resultsMediaItems.addAll(searchViewModel.filterItems("rating", localMediaItems));
+                        localMediaItems.clear();
+                        localMediaItems.addAll(resultsMediaItems);
+                        searchMoviesAdapter.setMediaItems(localMediaItems);
+                        searchMoviesAdapter.notifyDataSetChanged();
+                        break;
+                    case 2:
+                        searchViewModel.filterItems("release_date", localMediaItems);
+                        break;
+                    default:
+                        searchViewModel.loadSearchMediaItems("shrek");
+                }
+            }
+            public void onNothingSelected(AdapterView<?> arg0) { }
+        });
+
+
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             GridLayoutManager gridLayoutManager = new GridLayoutManager(root.getContext(), 3, GridLayoutManager.VERTICAL, false);
             searchRecyclerview.setLayoutManager(gridLayoutManager);
@@ -96,7 +131,7 @@ public class SearchFragment extends Fragment {
         searchViewModel.getSearchMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
             @Override
             public void onChanged(@Nullable List<MediaItem> mediaItems) {
-                if(mediaItems.size() != 0) {
+                if (mediaItems.size() != 0) {
                     localMediaItems.clear();
                     localMediaItems.addAll(mediaItems);
 //                searchViewModel.loadSearchMediaItems(query);
@@ -109,7 +144,34 @@ public class SearchFragment extends Fragment {
         });
 
 
-
         return root;
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        switch (text) {
+            case "Rating":
+                resultsMediaItems.clear();
+                resultsMediaItems.addAll(searchViewModel.filterItems("rating", localMediaItems));
+                localMediaItems.clear();
+                localMediaItems.addAll(resultsMediaItems);
+                searchMoviesAdapter.setMediaItems(localMediaItems);
+                searchMoviesAdapter.notifyDataSetChanged();
+                break;
+            case "Release date":
+               searchViewModel.filterItems("release_date", localMediaItems);
+                break;
+            default:
+                searchViewModel.loadSearchMediaItems("shrek");
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
 }
