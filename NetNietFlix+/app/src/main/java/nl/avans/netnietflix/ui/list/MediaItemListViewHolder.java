@@ -18,11 +18,13 @@ public class MediaItemListViewHolder extends RecyclerView.ViewHolder {
     public TextView description;
     public TextView numberOfItems;
     public Button deleteButton;
+    public Button shareButton;
     public MediaItemListViewHolder(@NonNull View itemView) {
         super(itemView);
         Log.d(TAG,"Constructor is called");
         name = itemView.findViewById(R.id.list_list_item_name);
         deleteButton = itemView.findViewById(R.id.list_list_item_delete);
+        shareButton = itemView.findViewById(R.id.list_list_item_share);
         //description = itemView.findViewById(R.id.list_list_item_description);
         numberOfItems = itemView.findViewById(R.id.list_list_item_num);
     }

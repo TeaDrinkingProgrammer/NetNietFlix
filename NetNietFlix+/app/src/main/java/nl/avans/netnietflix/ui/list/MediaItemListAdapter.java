@@ -84,6 +84,23 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
                 Toast.makeText(context, toast_msg, Toast.LENGTH_SHORT).show();
             }
         }
+
+        holder.shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick was called on shareButton");
+
+
+                //Share and show toast
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                String shareBody = "list goes here";
+                String shareSubject = "Wassup, check my awesome list.";
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                context.startActivity(Intent.createChooser(shareIntent, "Share using"));
+                Toast.makeText(context, "Sharing list", Toast.LENGTH_SHORT).show();
+            }
+        });
         holder.deleteButton.setOnClickListener(new MediaItemListAdapterOnClickListener(this));
         holder.name.setText(mediaItemListListItem.getName());
         holder.numberOfItems.setText("Items "+ String.valueOf(mediaItemListListItem.getItemCount()));
