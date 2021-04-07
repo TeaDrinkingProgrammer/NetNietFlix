@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.list.ListFragment"
     android:orientation="vertical">
     <TextView
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:padding="12sp"
         android:textSize="23sp"
-        android:text="Lists:"
+        android:text="@string/title_list"
         android:textStyle="bold"
         android:layout_alignParentTop="true" />
 <androidx.recyclerview.widget.RecyclerView
