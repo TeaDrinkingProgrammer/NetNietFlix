@@ -19,4 +19,6 @@
     <string name="list_cannot_remove">The list \"Watch Later\" cannot be removed</string>
     <string name="rating_added">Rating added</string>
     <string name="rating">Rating</string>
+    <string name="item_added_to_list">Movie added to Watch Later</string>
+    <string name="item_not_added_to_list">Movie could not be added to Watch Later. It may already be in there.</string>
 </resources>

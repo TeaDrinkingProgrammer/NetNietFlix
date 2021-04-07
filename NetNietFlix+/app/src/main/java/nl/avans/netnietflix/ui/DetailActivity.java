@@ -24,12 +24,14 @@ import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.MediaItem;
+import nl.avans.netnietflix.domain.MediaItemList;
 import nl.avans.netnietflix.domain.Review;
+import nl.avans.netnietflix.repository.API.AddMediaItemToListController;
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.RatingController;
 import nl.avans.netnietflix.repository.API.ReviewController;
 
-public class DetailActivity extends AppCompatActivity implements DetailedMediaItemController.DetailedMediaItemListener, ReviewController.ReviewListener, RatingController.RatingListener {
+public class DetailActivity extends AppCompatActivity implements DetailedMediaItemController.DetailedMediaItemListener, ReviewController.ReviewListener, RatingController.RatingListener, AddMediaItemToListController.AddMediaItemToListListener {
 
     private final String TAG = getClass().getSimpleName();
     final static String INTENT_EXTRA_MEDIA_ITEM = "media_item";
@@ -84,14 +86,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
             }
         });
 
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_button);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(DetailActivity.this, "Je heb op mij geklikt", Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
     Intent intent = getIntent();
 
@@ -102,7 +96,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 dataManager.getMediaItemDetails(this,mediaItem.getId());
                 dataManager.getReviewForMovieId(this,mediaItem.getId());
                 mTitle.setText(mediaItem.getTitle());
-                Log.d("Test", BASE_URL + mediaItem.getImgLink());
                 Picasso.
                         get()
                         .load(BASE_URL + mediaItem.getImgLink())
@@ -115,14 +108,28 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 mReleaseDate.setText(mediaItem.getReleaseDate());
 
                 submitButton.setOnClickListener(new DetailActivityOnClickListener(this,mediaItem.getId()));
+                floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_button);
+                floatingActionButton.setOnClickListener(new AddMediaItemToListOnClickListener(mediaItem.getId(), this));
             }
         }
     }
 
     @Override
     public void onPost(Boolean isSuccessful) {
-        String toast_msg = Resources.getSystem().getString(R.string.rating_added);
+        String toast_msg = this.getResources().getString(R.string.rating_added);
         Toast.makeText(this, toast_msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPostAddMediaItems(Boolean isSuccessful) {
+        if(isSuccessful){
+            String toast_msg = this.getResources().getString(R.string.item_added_to_list);
+            Toast.makeText(this, toast_msg, Toast.LENGTH_SHORT).show();
+        } else{
+            String toast_msg = this.getResources().getString(R.string.item_not_added_to_list);
+            Toast.makeText(this, toast_msg, Toast.LENGTH_LONG).show();
+        }
+
     }
 
     class DetailActivityOnClickListener implements View.OnClickListener {
@@ -137,6 +144,18 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
             dataManager.addRatingToMovie(listener,mediaItemId,savedValue);
         }
 
+    }
+    class AddMediaItemToListOnClickListener implements View.OnClickListener  {
+        private int mediaItemId;
+        private AddMediaItemToListController.AddMediaItemToListListener listener;
+        public AddMediaItemToListOnClickListener(int mediaItemId, AddMediaItemToListController.AddMediaItemToListListener listener){
+            this.mediaItemId = mediaItemId;
+            this.listener = listener;
+        }
+        @Override
+        public void onClick(View v) {
+            dataManager.addMediaItemToList(listener, 7088970, mediaItemId);
+        }
     }
 
     @Override
