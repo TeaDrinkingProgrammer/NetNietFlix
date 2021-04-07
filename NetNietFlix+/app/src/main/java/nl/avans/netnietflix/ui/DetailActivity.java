@@ -82,8 +82,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
             }
         });
 
-
-
     Intent intent = getIntent();
 
         if(intent != null) {
@@ -153,20 +151,4 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         }
 
     }
-
-    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            // updated continuously as the user slides the thumb
-            ProgressLabel.setText("Rating " + progress/10.0);
-        }
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-            // called when the user first touches the SeekBar
-        }
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-            // called after the user finishes moving the SeekBar
-        }
-    };
 }
