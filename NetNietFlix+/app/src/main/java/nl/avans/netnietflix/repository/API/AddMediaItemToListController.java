@@ -32,10 +32,11 @@ public class AddMediaItemToListController extends GenericController<PostResponse
         if(response.isSuccessful()) {
             Log.d(TAG, "response: " + response.body());
             // Deserialization
-            listener.onPostAddMediaItems(response.body().isSuccessful());
+            listener.onPostAddMediaItems(true);
 
         } else {
             Log.e(TAG, "Not successful! Message: " + response.message());
+            listener.onPostAddMediaItems(false);
         }
     }
     public interface AddMediaItemToListListener {

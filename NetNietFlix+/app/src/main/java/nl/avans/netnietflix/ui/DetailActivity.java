@@ -96,7 +96,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 dataManager.getMediaItemDetails(this,mediaItem.getId());
                 dataManager.getReviewForMovieId(this,mediaItem.getId());
                 mTitle.setText(mediaItem.getTitle());
-                Log.d("Test", BASE_URL + mediaItem.getImgLink());
                 Picasso.
                         get()
                         .load(BASE_URL + mediaItem.getImgLink())
@@ -123,8 +122,14 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
 
     @Override
     public void onPostAddMediaItems(Boolean isSuccessful) {
-        String toast_msg = "item added";
-        Toast.makeText(this, toast_msg, Toast.LENGTH_SHORT).show();
+        if(isSuccessful){
+            String toast_msg = this.getResources().getString(R.string.item_added_to_list);
+            Toast.makeText(this, toast_msg, Toast.LENGTH_SHORT).show();
+        } else{
+            String toast_msg = this.getResources().getString(R.string.item_not_added_to_list);
+            Toast.makeText(this, toast_msg, Toast.LENGTH_LONG).show();
+        }
+
     }
 
     class DetailActivityOnClickListener implements View.OnClickListener {
@@ -149,7 +154,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         }
         @Override
         public void onClick(View v) {
-            Toast.makeText(DetailActivity.this, "Je heb op mij geklikt", Toast.LENGTH_SHORT).show();
             dataManager.addMediaItemToList(listener, 7088970, mediaItemId);
         }
     }
