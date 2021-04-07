@@ -12,4 +12,6 @@
         <item>Rating</item>
         <item>Popularity</item>
     </string-array>
+    <string name="list_removed">has been removed</string>
+    <string name="list_cannot_remove">The list \"Watch Later\" cannot be removed</string>
 </resources>

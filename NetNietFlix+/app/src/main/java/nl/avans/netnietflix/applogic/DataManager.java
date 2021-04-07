@@ -40,8 +40,8 @@ public class DataManager {
     public void getDetailItemList(DetailMediaItemListController.DetailMediaItemListListener mediaItemListListener, int listId){
         dataController.getDetailMediaItemList(mediaItemListListener,listId);
     }
-    public void removeList( int listId){
-        dataController.RemoveListController(listId);
+    public void removeList(RemoveListController.RemoveListListener listener, int listId){
+        dataController.RemoveListController(listener, listId);
     }
     public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating){
         dataController.addRatingToMovie(listener, movieId, rating);

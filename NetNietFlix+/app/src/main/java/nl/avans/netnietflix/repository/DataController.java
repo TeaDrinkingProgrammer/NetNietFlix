@@ -56,9 +56,9 @@ public class DataController{
         DetailMediaItemListController detailMediaItemListController = new DetailMediaItemListController(mediaItemListListener);
         detailMediaItemListController.getDetailMediaItemList(listId,getLanguage());
     }
-    public void RemoveListController( int listId){
+    public void RemoveListController(RemoveListController.RemoveListListener listener, int listId){
         RemoveListController removeListController = new RemoveListController();
-        removeListController.removeList(listId);
+        removeListController.removeList(listener,listId);
     }
 
     public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating) {
