@@ -81,6 +81,18 @@
             android:textSize="20dp"
             android:paddingHorizontal="30dp"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_floating_button_add"
+            app:fabSize="normal"
+            android:backgroundTint="@color/design_default_color_primary"
+            app:elevation="6dp"
+            android:id="@+id/fab_button"
+            />
+
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
