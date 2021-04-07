@@ -22,16 +22,13 @@
         android:drawableLeft="@drawable/ic_baseline_search_24"
         android:hint="@string/search_hint"
         android:inputType="textPersonName"
-        android:paddingLeft="15dp"
-        android:textColor="@color/black" />
+        android:paddingLeft="15dp"/>
 
     <Spinner
         android:id="@+id/spinner_filter"
         style="@style/SpinnerTheme"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:backgroundTint="@color/black"
-        android:foregroundTint="@color/white"
         />
 
     </LinearLayout>

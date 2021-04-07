@@ -42,7 +42,7 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_list_activity);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
 
         detailListRecyclerview= findViewById(R.id.detail_list_recycler_view);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -55,7 +55,6 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
             Log.d(TAG, "gridLayoutManager is used");
         }
         detailListRecyclerview.setAdapter(detailListMoviesAdapter);
-        //TODO Proper back button
         name = (TextView) findViewById(R.id.media_item_list_name) ;
         description = (TextView) findViewById(R.id.media_item_list_description) ;
         Intent intent = getIntent();

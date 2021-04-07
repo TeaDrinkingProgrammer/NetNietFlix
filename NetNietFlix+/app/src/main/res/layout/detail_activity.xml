@@ -34,7 +34,6 @@
             android:textStyle="bold"
             android:paddingHorizontal="30dp"
             android:paddingTop="15dp"
-            android:textColor="@color/black"
             />
 
         <ImageView
@@ -82,6 +81,18 @@
             android:textSize="20dp"
             android:paddingHorizontal="30dp"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_floating_button_add"
+            app:fabSize="normal"
+            android:backgroundTint="@color/design_default_color_primary"
+            app:elevation="6dp"
+            android:id="@+id/fab_button"
+            />
+
         <View
             android:id="@+id/divider2"
             android:layout_width="match_parent"
@@ -94,7 +105,6 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/rating_title"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
             android:paddingBottom="15dp"
@@ -141,7 +151,6 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/review_title"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
             android:paddingVertical="15dp"
@@ -165,7 +174,6 @@
             android:id="@+id/media_item_review_title_1"
             android:textStyle="bold"
             android:paddingVertical="15dp"
-            android:textColor="@color/black"
             />
 
         <TextView
@@ -195,7 +203,6 @@
                 android:id="@+id/media_item_review_title_2"
                 android:textStyle="bold"
                 android:paddingVertical="15dp"
-                android:textColor="@color/black"
                 />
 
             <TextView

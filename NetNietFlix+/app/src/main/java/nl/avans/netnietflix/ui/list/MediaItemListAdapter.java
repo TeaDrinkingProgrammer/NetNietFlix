@@ -96,12 +96,15 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
             public void onClick(View v) {
                 Log.d(TAG, "onClick was called on shareButton");
                 //Share and show toast
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                String shareBody = "list goes here";
-                String shareSubject = "Wassup, check my awesome list.";
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                context.startActivity(Intent.createChooser(shareIntent, "Share using"));
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                String shareSubject = "List: "+ mediaItemListListItem.getName() +"\n Description: "+ mediaItemListListItem.getDescription() +"\n Number of movies: "+ mediaItemListListItem.getItemCount();
+                sendIntent.putExtra(Intent.EXTRA_TEXT, shareSubject);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, "NetNietFlix+");
+                context.startActivity(shareIntent);
                 Toast.makeText(context, "Sharing list", Toast.LENGTH_SHORT).show();
             }
         });

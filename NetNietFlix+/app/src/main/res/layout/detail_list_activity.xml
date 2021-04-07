@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            />
+
         <TextView
             android:id="@+id/media_item_list_name"
             android:layout_width="match_parent"
