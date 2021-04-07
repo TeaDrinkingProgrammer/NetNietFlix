@@ -43,7 +43,7 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
         if(intent != null) {
             if (intent.hasExtra("id")) {
                int id = intent.getExtras().getInt("id");
-                DataManager dataManager = new DataManager(Locale.getDefault().getLanguage());
+                DataManager dataManager = new DataManager();
                 dataManager.getDetailItemList(this,id);
             }
         }

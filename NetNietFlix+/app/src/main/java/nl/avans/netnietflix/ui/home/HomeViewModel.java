@@ -21,7 +21,7 @@ public class HomeViewModel extends ViewModel implements MediaItemControllerListe
     private DataManager dataManager;
 
     public HomeViewModel(){
-         dataManager = new DataManager(Locale.getDefault().getLanguage());
+         dataManager = new DataManager();
     }
 
     public LiveData<List<MediaItem>> getTrendingMediaItems(){

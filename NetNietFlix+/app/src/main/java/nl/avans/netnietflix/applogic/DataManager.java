@@ -13,8 +13,8 @@ public class DataManager {
     private static final String TAG = DataManager.class.getSimpleName();
     private DataController dataController;
 
-    public DataManager(String language){
-        dataController = new DataController(language);
+    public DataManager(){
+        dataController = new DataController();
     }
 
     public void loadTrendingMediaItems(MediaItemControllerListener listener){

@@ -20,7 +20,7 @@ public class SearchViewModel extends ViewModel implements MediaItemControllerLis
     private DataManager dataManager;
 
     public SearchViewModel() {
-        dataManager = new DataManager(Locale.getDefault().getLanguage());
+        dataManager = new DataManager();
     }
 
     public LiveData<List<MediaItem>> getSearchMediaItems(){

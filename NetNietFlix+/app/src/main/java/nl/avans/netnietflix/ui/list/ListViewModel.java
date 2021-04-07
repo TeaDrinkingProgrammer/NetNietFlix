@@ -23,7 +23,7 @@ public class ListViewModel extends ViewModel implements AllMediaItemListsControl
 
 
     public ListViewModel() {
-        dataManager = new DataManager(Locale.getDefault().getLanguage());
+        dataManager = new DataManager();
     }
     public LiveData<List<MediaItemList>> getMediaItemLists(){
         Log.d(TAG,"getMediaItems is executed");

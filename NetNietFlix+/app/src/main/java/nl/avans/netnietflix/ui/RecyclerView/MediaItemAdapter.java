@@ -66,7 +66,7 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> 
                 //MediaItem wordt hier gecast als Serializable om hem te kunnen passen met de intent.
                 Log.d(TAG,"onClick is called");
                 DetailActivity detailActivity = new DetailActivity();
-                DataManager dataManager = new DataManager(Locale.getDefault().getLanguage());
+                DataManager dataManager = new DataManager();
                 dataManager.getMediaItemDetails(detailActivity,mediaItem.getId());
                 dataManager.getReviewForMovieId(detailActivity,mediaItem.getId());
                 Intent intent = new Intent(context,detailActivity.getClass());
