@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,10 +19,11 @@ import java.util.List;
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItemList;
+import nl.avans.netnietflix.repository.API.AllMediaItemListsController;
 import nl.avans.netnietflix.repository.API.RemoveListController;
 import nl.avans.netnietflix.ui.detailList.DetailListActivity;
 
-public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListViewHolder> implements Serializable {
+public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListViewHolder> implements Serializable, AllMediaItemListsController.MediaItemListListener {
     private final String TAG = getClass().getSimpleName();
     final static String INTENT_EXTRA_MEDIA_ITEM = "media_item";
     private List<MediaItemList> MediaItemLists;
@@ -68,13 +70,21 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
                             context.startActivity(intent);
             }
         });
-                    holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.d(TAG, "onClick is called on deleteButton");
-                            dataManager.removeList(mediaItemListListItem.getId());
-                        }
-                    });
+        class MediaItemListAdapterOnClickListener implements View.OnClickListener{
+            AllMediaItemListsController.MediaItemListListener listener;
+            public MediaItemListAdapterOnClickListener(AllMediaItemListsController.MediaItemListListener listener){
+                this.listener = listener;
+            }
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick is called on deleteButton");
+                dataManager.removeList(mediaItemListListItem.getId());
+                dataManager.getMediaItemLists(listener);
+                String toast_msg = "List has been deleted. Refresh for an updated view.";
+                Toast.makeText(context, toast_msg, Toast.LENGTH_SHORT).show();
+            }
+        }
+        holder.deleteButton.setOnClickListener(new MediaItemListAdapterOnClickListener(this));
         holder.name.setText(mediaItemListListItem.getName());
         holder.numberOfItems.setText("Items "+ String.valueOf(mediaItemListListItem.getItemCount()));
     }
@@ -90,5 +100,10 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
     public int getItemCount() {
         Log.d(TAG,"getItemCount is called");
         return MediaItemLists.size();
+    }
+
+    @Override
+    public void onMediaItemListsAvailable(List<MediaItemList> mediaItemLists) {
+        this.setMediaItemLists(mediaItemLists);
     }
 }
