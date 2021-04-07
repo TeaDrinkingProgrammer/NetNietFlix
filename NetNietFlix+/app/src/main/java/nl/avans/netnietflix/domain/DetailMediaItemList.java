@@ -12,4 +12,9 @@ public class DetailMediaItemList extends MediaItemList{
         this.mediaItemList = mediaItemList;
     }
 
+    public List<MediaItem> getMediaItemList() {
+        return mediaItemList;
+    }
+
+
 }

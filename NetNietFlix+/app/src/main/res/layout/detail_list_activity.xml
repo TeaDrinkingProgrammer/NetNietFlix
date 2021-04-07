@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.detailList.DetailListActivity"
-    >
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp" >
+    android:orientation="vertical">
 
         <TextView
             android:id="@+id/media_item_list_name"
@@ -18,7 +14,31 @@
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:padding="15dp"
             />
+
+        <TextView
+            android:id="@+id/media_item_list_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="15sp"
+
+            />
+
+        <TextView
+            android:id="@+id/media_item_list_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:id="@+id/detail_list_recycler_view" />
+
 </LinearLayout>
 
-</ScrollView>

@@ -34,7 +34,7 @@ public class SearchFragment extends Fragment {
     private String TAG = this.getClass().getSimpleName();
     private SearchViewModel searchViewModel;
     private RecyclerView searchRecyclerview;
-    private MediaItemAdapter searchMoviesAdapter = new MediaItemAdapter(this.getContext());
+    private MediaItemAdapter searchMoviesAdapter;
     private List<MediaItem> localMediaItems = new ArrayList<MediaItem>();
     private String query = "shrek";
     private EditText searchText;
@@ -96,12 +96,15 @@ public class SearchFragment extends Fragment {
         searchViewModel.getSearchMediaItems().observe(getViewLifecycleOwner(), new Observer<List<MediaItem>>() {
             @Override
             public void onChanged(@Nullable List<MediaItem> mediaItems) {
-                localMediaItems.clear();
-                localMediaItems.addAll(mediaItems);
-                Log.d(TAG, mediaItems.get(0).toString());
+                if(mediaItems.size() != 0) {
+                    localMediaItems.clear();
+                    localMediaItems.addAll(mediaItems);
 //                searchViewModel.loadSearchMediaItems(query);
-                searchMoviesAdapter.setMediaItems(localMediaItems);
-                searchMoviesAdapter.notifyDataSetChanged();
+                    searchMoviesAdapter.setMediaItems(localMediaItems);
+                    searchMoviesAdapter.notifyDataSetChanged();
+                } else {
+                    searchViewModel.loadSearchMediaItems("shrek");
+                }
             }
         });
 
