@@ -99,7 +99,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                String shareSubject = mediaItemListListItem.getName() +"\n"+ mediaItemListListItem.getDescription() +"\n"+ mediaItemListListItem.getItemCount();
+                String shareSubject = "List: "+ mediaItemListListItem.getName() +"\n Description: "+ mediaItemListListItem.getDescription() +"\n Number of movies: "+ mediaItemListListItem.getItemCount();
                 sendIntent.putExtra(Intent.EXTRA_TEXT, shareSubject);
                 sendIntent.setType("text/plain");
 
