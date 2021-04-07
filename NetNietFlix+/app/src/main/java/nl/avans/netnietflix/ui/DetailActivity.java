@@ -4,17 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +20,6 @@ import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.MediaItem;
-import nl.avans.netnietflix.domain.MediaItemList;
 import nl.avans.netnietflix.domain.Review;
 import nl.avans.netnietflix.repository.API.AddMediaItemToListController;
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
@@ -52,7 +47,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private TextView mReviewDescription2;
     private Slider slider;
     private Double savedValue;
-    private FloatingActionButton floatingActionButton;
+    private Button addButton;
 
     public DetailActivity(){
         dataManager = new DataManager();
@@ -108,8 +103,8 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 mReleaseDate.setText(mediaItem.getReleaseDate());
 
                 submitButton.setOnClickListener(new DetailActivityOnClickListener(this,mediaItem.getId()));
-                floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_button);
-                floatingActionButton.setOnClickListener(new AddMediaItemToListOnClickListener(mediaItem.getId(), this));
+                addButton = (Button) findViewById(R.id.fab_button);
+                addButton.setOnClickListener(new AddMediaItemToListOnClickListener(mediaItem.getId(), this));
             }
         }
     }

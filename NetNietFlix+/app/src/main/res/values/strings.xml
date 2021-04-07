@@ -10,6 +10,7 @@
     <string name="submit">submit</string>
     <string name="rating_title">Give rating</string>
     <string name="review_title">Reviews</string>
+    <string name="add">Add to Watch Later</string>
     <string-array name="filters">
         <item>Normal</item>
         <item>Rating</item>
