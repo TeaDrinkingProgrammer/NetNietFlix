@@ -9,6 +9,7 @@ import nl.avans.netnietflix.domain.PostResponse;
 import nl.avans.netnietflix.domain.Review;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -40,4 +41,6 @@ public interface API {
     @POST("list/{listId}/add_item")
     Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
+    @DELETE("list/{listId}")
+    Call<PostResponse> removeMediaItemFromList(@Path("listId") int listId, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
 }
