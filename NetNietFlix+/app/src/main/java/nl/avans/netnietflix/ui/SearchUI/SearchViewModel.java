@@ -60,10 +60,21 @@ public class SearchViewModel extends ViewModel implements MediaItemControllerLis
         return bestMediaItem;
     }
 
+    public MediaItem sortPopularity(List<MediaItem> mediaItems){
+        MediaItem bestMediaItem = mediaItems.get(0);
+        for(int i = 1; i < mediaItems.size(); i++) {
+            if(bestMediaItem.getPopularity() < mediaItems.get(i).getPopularity()){
+                bestMediaItem = mediaItems.get(i);
+            }
+        }
+        mediaItemsNormal.remove(bestMediaItem);
+        return bestMediaItem;
+    }
+
     public List<MediaItem> filterItems(String filterOption, List<MediaItem> mediaItems){
         mediaItemsNormal.clear();
         mediaItemsNormalResult.clear();
-        if(filterOption.equals("rating")){
+        if(filterOption.equals("Rating")){
             mediaItemsNormal.addAll(mediaItems);
             for(MediaItem mediaItem : mediaItems) {
                 MediaItem answer = sortRatings(mediaItemsNormal);
@@ -72,6 +83,12 @@ public class SearchViewModel extends ViewModel implements MediaItemControllerLis
             Log.d(TAG,mediaItemsNormalResult.get(0).getVoteAverage().toString());
             Log.d(TAG,mediaItemsNormalResult.get(1).getVoteAverage().toString());
             Log.d(TAG,mediaItemsNormalResult.get(2).getVoteAverage().toString());
+        } else if(filterOption.equals("Popularity")){
+            mediaItemsNormal.addAll(mediaItems);
+            for(MediaItem mediaItem : mediaItems) {
+                MediaItem answer = sortPopularity(mediaItemsNormal);
+                mediaItemsNormalResult.add(answer);
+            }
         }
         return mediaItemsNormalResult;
     }

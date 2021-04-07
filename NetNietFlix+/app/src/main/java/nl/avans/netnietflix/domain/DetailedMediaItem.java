@@ -16,4 +16,7 @@ public class DetailedMediaItem extends MediaItem{
         super(posterPath, overview, releaseDate, genreIds, id, originalTitle, originalLanguage, title, backdropPath, popularity, voteCount, video, voteAverage);
     }
 
+    public String getWatchTime() {
+        return watchTime;
+    }
 }

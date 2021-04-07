@@ -129,21 +129,32 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-        switch (text) {
-            case "Rating":
-                resultsMediaItems.clear();
-                resultsMediaItems.addAll(searchViewModel.filterItems("rating", localMediaItems));
-                localMediaItems.clear();
-                localMediaItems.addAll(resultsMediaItems);
-                searchMoviesAdapter.setMediaItems(localMediaItems);
-                searchMoviesAdapter.notifyDataSetChanged();
-                break;
-            case "Release date":
-               searchViewModel.filterItems("release_date", localMediaItems);
-                break;
-            default:
-                searchViewModel.loadSearchMediaItems(query);
+        if(text.equals("Normal")) {
+            searchViewModel.loadSearchMediaItems(query);
+        } else {
+            resultsMediaItems.clear();
+            resultsMediaItems.addAll(searchViewModel.filterItems(text, localMediaItems));
+            localMediaItems.clear();
+            localMediaItems.addAll(resultsMediaItems);
+            searchMoviesAdapter.setMediaItems(localMediaItems);
+            searchMoviesAdapter.notifyDataSetChanged();
         }
+
+//        switch (text) {
+//            case "Rating":
+//                resultsMediaItems.clear();
+//                resultsMediaItems.addAll(searchViewModel.filterItems("rating", localMediaItems));
+//                localMediaItems.clear();
+//                localMediaItems.addAll(resultsMediaItems);
+//                searchMoviesAdapter.setMediaItems(localMediaItems);
+//                searchMoviesAdapter.notifyDataSetChanged();
+//                break;
+//            case "Popularity":
+//               searchViewModel.filterItems("popularity", localMediaItems);
+//                break;
+//            default:
+//                searchViewModel.loadSearchMediaItems(query);
+//        }
     }
 
     @Override

@@ -10,6 +10,6 @@
     <string-array name="filters">
         <item>Normal</item>
         <item>Rating</item>
-        <item>Release date</item>
+        <item>Popularity</item>
     </string-array>
 </resources>
