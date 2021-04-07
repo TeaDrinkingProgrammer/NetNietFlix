@@ -43,7 +43,7 @@ public interface API {
     Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
     @POST("movie/{movie_id}/rating")
-    Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Body int rating, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
+    Call<PostResponse> addRatingToMovie(@Path("movie_id") int id, @Body double rating, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
     @DELETE("list/{listId}")
     Call<PostResponse> removeList(@Path("listId") int listId, @Query("api_key") String apiKey,@Query("session_id") String sessionId);

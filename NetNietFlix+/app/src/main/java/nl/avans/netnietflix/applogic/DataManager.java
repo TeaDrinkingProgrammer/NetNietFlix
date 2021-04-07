@@ -43,7 +43,7 @@ public class DataManager {
     public void removeList(RemoveListController.RemoveListListener listener, int listId){
         dataController.RemoveListController(listener, listId);
     }
-    public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating){
+    public void addRatingToMovie(RatingController.RatingListener listener, int movieId, double rating){
         dataController.addRatingToMovie(listener, movieId, rating);
     }
 

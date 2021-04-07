@@ -14,7 +14,7 @@ public class RatingController extends GenericController<PostResponse> implements
         this.listener = listener;
     }
 
-    public void addRatingToMovie(int movieId, int rating) {
+    public void addRatingToMovie(int movieId, double rating) {
         Call<PostResponse> call = api.addRatingToMovie(movieId, rating, API_KEY, SESSION_ID);
         call.enqueue(this);
     }

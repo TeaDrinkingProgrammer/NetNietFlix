@@ -61,7 +61,7 @@ public class DataController{
         removeListController.removeList(listener,listId);
     }
 
-    public void addRatingToMovie(RatingController.RatingListener listener, int movieId, int rating) {
+    public void addRatingToMovie(RatingController.RatingListener listener, int movieId, double rating) {
         RatingController ratingController = new RatingController(listener);
         ratingController.addRatingToMovie(movieId, rating);
     }

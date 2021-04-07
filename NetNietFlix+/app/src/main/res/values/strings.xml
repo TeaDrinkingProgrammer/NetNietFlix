@@ -16,4 +16,6 @@
     </string-array>
     <string name="list_removed">has been removed</string>
     <string name="list_cannot_remove">The list \"Watch Later\" cannot be removed</string>
+    <string name="rating_added">Rating added</string>
+    <string name="rating">Rating</string>
 </resources>

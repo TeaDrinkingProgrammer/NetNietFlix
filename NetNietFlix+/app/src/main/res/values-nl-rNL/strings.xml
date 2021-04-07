@@ -10,4 +10,7 @@
     <string name="list_removed">is verwijderd</string>
     <string name="review_title">Geef rating</string>
     <string name="list_cannot_remove">De lijst \"Later Bekijken\" kan niet verwijderd worden</string>
+    <string name="rating_added">Rating toegevoegd</string>
+    <string name="rating">Rating</string>
+    <string name="submit">submit</string>
 </resources>
