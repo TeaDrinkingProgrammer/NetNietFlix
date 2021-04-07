@@ -2,6 +2,7 @@ package nl.avans.netnietflix.repository;
 
 import android.util.Log;
 
+import nl.avans.netnietflix.repository.API.AddMediaItemToListController;
 import nl.avans.netnietflix.repository.API.DetailMediaItemListController;
 import nl.avans.netnietflix.repository.API.DetailedMediaItemController;
 import nl.avans.netnietflix.repository.API.MediaItemControllerListener;
@@ -50,6 +51,11 @@ public class DataController{
         DetailMediaItemListController detailMediaItemListController = new DetailMediaItemListController(mediaItemListListener);
         detailMediaItemListController.getDetailMediaItemList(listId);
     }
+    public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId,int mediaId){
+        AddMediaItemToListController addMediaItemToListController = new AddMediaItemToListController(listener);
+        addMediaItemToListController.addMediaItemToList(listId,mediaId);
+    }
+
 
 //    public boolean isConnected() {
 //        try {

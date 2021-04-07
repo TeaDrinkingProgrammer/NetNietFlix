@@ -5,9 +5,12 @@ import nl.avans.netnietflix.domain.DetailedMediaItem;
 import nl.avans.netnietflix.domain.APIResponse;
 import nl.avans.netnietflix.domain.MediaItem;
 import nl.avans.netnietflix.domain.MediaItemList;
+import nl.avans.netnietflix.domain.PostResponse;
 import nl.avans.netnietflix.domain.Review;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -34,5 +37,7 @@ public interface API {
 
     @GET("list/{listId}")
     Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
+    @POST("list/{listId}/add_item")
+    Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);
 
 }
