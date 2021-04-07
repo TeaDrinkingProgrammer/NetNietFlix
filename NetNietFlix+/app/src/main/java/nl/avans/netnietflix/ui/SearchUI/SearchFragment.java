@@ -92,30 +92,8 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(root.getContext(), R.array.filters, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-//        spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(this);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> arg0, View view, int position, long id) {
-                int pos = spinner.getSelectedItemPosition();
-
-                switch (pos) {
-                    case 1:
-                        resultsMediaItems.clear();
-                        resultsMediaItems.addAll(searchViewModel.filterItems("rating", localMediaItems));
-                        localMediaItems.clear();
-                        localMediaItems.addAll(resultsMediaItems);
-                        searchMoviesAdapter.setMediaItems(localMediaItems);
-                        searchMoviesAdapter.notifyDataSetChanged();
-                        break;
-                    case 2:
-                        searchViewModel.filterItems("release_date", localMediaItems);
-                        break;
-                    default:
-                        searchViewModel.loadSearchMediaItems("shrek");
-                }
-            }
-            public void onNothingSelected(AdapterView<?> arg0) { }
-        });
 
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -164,7 +142,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
                searchViewModel.filterItems("release_date", localMediaItems);
                 break;
             default:
-                searchViewModel.loadSearchMediaItems("shrek");
+                searchViewModel.loadSearchMediaItems(query);
         }
     }
 
