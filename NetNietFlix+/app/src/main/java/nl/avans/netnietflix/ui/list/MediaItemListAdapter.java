@@ -90,6 +90,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
             public void onClick(View v) {
                 Log.d(TAG, "onClick was called on shareButton");
 
+                //TODO Get a list of items in the selected list and share them with a String array.
 
                 //Share and show toast
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
