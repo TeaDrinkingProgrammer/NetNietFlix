@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
 import com.squareup.picasso.Picasso;
 
@@ -49,6 +50,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private TextView mReviewDescription2;
     private Slider slider;
     private Double savedValue;
+    private FloatingActionButton floatingActionButton;
 
     public DetailActivity(){
         dataManager = new DataManager();
@@ -81,6 +83,15 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
                 savedValue = Double.valueOf(value);
             }
         });
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_button);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(DetailActivity.this, "Je heb op mij geklikt", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     Intent intent = getIntent();
 
