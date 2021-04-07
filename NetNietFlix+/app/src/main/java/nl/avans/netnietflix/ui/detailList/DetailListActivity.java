@@ -73,7 +73,8 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
         this.detailMediaItemList = mediaItemList;
         name.setText(mediaItemList.getName());
         description.setText(mediaItemList.getDescription());
-        detailListMoviesAdapter.setMediaItems(detailMediaItemList.getMediaItemList());
-        Log.d(TAG, detailMediaItemList.getMediaItemList().get(0).getTitle());
+        if(detailMediaItemList.getMediaItemList().size() != 0) {
+            detailListMoviesAdapter.setMediaItems(detailMediaItemList.getMediaItemList());
+        }
     }
 }
