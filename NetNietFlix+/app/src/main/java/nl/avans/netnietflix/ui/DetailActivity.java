@@ -47,6 +47,8 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private TextView mReviewDescription1;
     private TextView mReviewTitle2;
     private TextView mReviewDescription2;
+    private Slider slider;
+    private Double savedValue;
 
     public DetailActivity(){
         dataManager = new DataManager();
