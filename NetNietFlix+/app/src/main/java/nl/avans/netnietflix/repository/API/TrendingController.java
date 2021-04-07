@@ -16,8 +16,8 @@ public class TrendingController extends GenericController<APIResponse<MediaItem>
     public TrendingController(MediaItemControllerListener listener){
         this.listener = listener;
     }
-    public void loadTrendingMoviesPerWeek() {
-        Call<APIResponse<MediaItem>> call = api.getTrendingMediaItems(API_KEY);
+    public void loadTrendingMoviesPerWeek(String language) {
+        Call<APIResponse<MediaItem>> call = api.getTrendingMediaItems(API_KEY,language);
         call.enqueue(this);
     }
 

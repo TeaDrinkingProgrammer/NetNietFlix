@@ -18,8 +18,8 @@ public class DetailMediaItemListController extends GenericController<DetailMedia
         this.listener = listener;
     }
 
-    public void getDetailMediaItemList(int itemId) {
-        Call<DetailMediaItemList> call = api.getDetailMediaItemList(itemId,API_KEY);
+    public void getDetailMediaItemList(int itemId,String language) {
+        Call<DetailMediaItemList> call = api.getDetailMediaItemList(itemId,API_KEY,language);
         call.enqueue(this);
     }
 

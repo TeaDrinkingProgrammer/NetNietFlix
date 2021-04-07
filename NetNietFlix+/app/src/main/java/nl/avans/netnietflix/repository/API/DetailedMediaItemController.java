@@ -15,8 +15,8 @@ public class DetailedMediaItemController extends GenericController<DetailedMedia
     public DetailedMediaItemController(DetailedMediaItemListener listener){
         this.listener = listener;
     }
-    public void getMediaItemDetails(int MediaItemid) {
-        Call<DetailedMediaItem> call = api.getMediaItemDetails(MediaItemid,API_KEY);
+    public void getMediaItemDetails(int MediaItemid,String language) {
+        Call<DetailedMediaItem> call = api.getMediaItemDetails(MediaItemid,API_KEY,language);
         call.enqueue(this);
     }
 

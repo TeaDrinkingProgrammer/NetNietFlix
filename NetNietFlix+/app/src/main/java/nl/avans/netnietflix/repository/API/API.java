@@ -19,13 +19,13 @@ import retrofit2.http.Query;
 
 public interface API {
     @GET("trending/movie/week")
-    Call<APIResponse<MediaItem>> getTrendingMediaItems(@Query("api_key") String apiKey);
+    Call<APIResponse<MediaItem>> getTrendingMediaItems(@Query("api_key") String apiKey,@Query("language") String language);
 
     @GET("movie/top_rated")
-    Call<APIResponse<MediaItem>> getTopRatedMediaItems(@Query("api_key") String apiKey);
+    Call<APIResponse<MediaItem>> getTopRatedMediaItems(@Query("api_key") String apiKey,@Query("language") String language);
 
     @GET("movie/{id}")
-    Call<DetailedMediaItem> getMediaItemDetails(@Path("id") int id, @Query("api_key") String apiKey);
+    Call<DetailedMediaItem> getMediaItemDetails(@Path("id") int id, @Query("api_key") String apiKey,@Query("language") String language);
 
     @GET("movie/{id}/reviews")
     Call<APIResponse<Review>> getReviewsForMovieId(@Path("id") int id, @Query("api_key") String apiKey);
@@ -34,10 +34,10 @@ public interface API {
     Call<APIResponse<MediaItemList>> getMediaItemLists(@Path("accountId") int id, @Query("api_key") String apiKey,@Query("session_id") String sessionId);
 
     @GET("search/movie")
-    Call<APIResponse<MediaItem>> getMediaItemSearch(@Query("api_key") String apiKey, @Query("query") String query);
+    Call<APIResponse<MediaItem>> getMediaItemSearch(@Query("api_key") String apiKey, @Query("query") String query,@Query("language") String language);
 
     @GET("list/{listId}")
-    Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey);
+    Call<DetailMediaItemList> getDetailMediaItemList(@Path("listId") int id, @Query("api_key") String apiKey,@Query("language") String language);
 
     @POST("list/{listId}/add_item")
     Call<PostResponse> addMediaItemToList(@Path("listId") int id, @Body int mediaId, @Query("api_key") String apiKey, @Query("session_id") String sessionId);

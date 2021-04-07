@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 import nl.avans.netnietflix.R;
 import nl.avans.netnietflix.applogic.DataManager;
@@ -42,7 +43,7 @@ public class DetailListActivity extends AppCompatActivity implements DetailMedia
         if(intent != null) {
             if (intent.hasExtra("id")) {
                int id = intent.getExtras().getInt("id");
-                DataManager dataManager = new DataManager();
+                DataManager dataManager = new DataManager(Locale.getDefault().getLanguage());
                 dataManager.getDetailItemList(this,id);
             }
         }

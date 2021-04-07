@@ -16,8 +16,8 @@ public class TopRatedController extends GenericController<APIResponse<MediaItem>
     public TopRatedController(MediaItemControllerListener listener){
         this.listener = listener;
     }
-    public void loadTopRatedMoviesPerWeek() {
-        Call<APIResponse<MediaItem>> call = api.getTopRatedMediaItems(API_KEY);
+    public void loadTopRatedMoviesPerWeek(String language) {
+        Call<APIResponse<MediaItem>> call = api.getTopRatedMediaItems(API_KEY,language);
         call.enqueue(this);
     }
 

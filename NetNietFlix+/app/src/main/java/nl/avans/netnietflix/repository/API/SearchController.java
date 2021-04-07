@@ -16,8 +16,8 @@ public class SearchController extends GenericController<APIResponse<MediaItem>> 
     public SearchController(MediaItemControllerListener listener){
         this.listener = listener;
     }
-    public void getSearchResults(String query) {
-        Call<APIResponse<MediaItem>> call = api.getMediaItemSearch(API_KEY, query);
+    public void getSearchResults(String query,String language) {
+        Call<APIResponse<MediaItem>> call = api.getMediaItemSearch(API_KEY, query,language);
         call.enqueue(this);
     }
 

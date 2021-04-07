@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -65,7 +66,7 @@ public class MediaItemAdapter extends RecyclerView.Adapter<MediaItemViewHolder> 
                 //MediaItem wordt hier gecast als Serializable om hem te kunnen passen met de intent.
                 Log.d(TAG,"onClick is called");
                 DetailActivity detailActivity = new DetailActivity();
-                DataManager dataManager = new DataManager();
+                DataManager dataManager = new DataManager(Locale.getDefault().getLanguage());
                 dataManager.getMediaItemDetails(detailActivity,mediaItem.getId());
                 dataManager.getReviewForMovieId(detailActivity,mediaItem.getId());
                 Intent intent = new Intent(context,detailActivity.getClass());

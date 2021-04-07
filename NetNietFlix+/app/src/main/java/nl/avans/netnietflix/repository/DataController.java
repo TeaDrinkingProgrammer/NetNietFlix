@@ -14,22 +14,26 @@ import nl.avans.netnietflix.repository.API.TopRatedController;
 import nl.avans.netnietflix.repository.API.TrendingController;
 
 public class DataController{
+    private String language;
+    public DataController(String language){
+        this.language = language;
+    }
     private static final String TAG = DataController.class.getSimpleName();
     public void loadTrendingMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems from API");
         TrendingController apiController = new TrendingController(listener);
-        apiController.loadTrendingMoviesPerWeek();
+        apiController.loadTrendingMoviesPerWeek(language);
     }
     public void loadTopRatedMediaItems(MediaItemControllerListener listener){
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems from API");
         TopRatedController apiController = new TopRatedController(listener);
-        apiController.loadTopRatedMoviesPerWeek();
+        apiController.loadTopRatedMoviesPerWeek(language);
     }
     public void getMediaItemDetails(DetailedMediaItemController.DetailedMediaItemListener listener, int mediaItemid){
         DetailedMediaItemController apiController = new DetailedMediaItemController(listener);
-        apiController.getMediaItemDetails(mediaItemid);
+        apiController.getMediaItemDetails(mediaItemid,language);
     }
 
     public void getReviewForMovieId(ReviewController.ReviewListener reviewListener, int mediaItemId){
@@ -45,12 +49,12 @@ public class DataController{
         // Do an asynchronous operation to fetch movies
         Log.d(TAG, "loadMediaItems from API");
         SearchController apiController = new SearchController(listener);
-        apiController.getSearchResults(query);
+        apiController.getSearchResults(query,language);
     }
 
     public void getDetailMediaItemList(DetailMediaItemListController.DetailMediaItemListListener mediaItemListListener, int listId){
         DetailMediaItemListController detailMediaItemListController = new DetailMediaItemListController(mediaItemListListener);
-        detailMediaItemListController.getDetailMediaItemList(listId);
+        detailMediaItemListController.getDetailMediaItemList(listId,language);
     }
     public void addMediaItemToList(AddMediaItemToListController.AddMediaItemToListListener listener,int listId,int mediaId){
         AddMediaItemToListController addMediaItemToListController = new AddMediaItemToListController(listener);

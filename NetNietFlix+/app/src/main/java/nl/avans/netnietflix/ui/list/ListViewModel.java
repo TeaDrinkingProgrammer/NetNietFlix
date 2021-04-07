@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
+import java.util.Locale;
 
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItem;
@@ -22,7 +23,7 @@ public class ListViewModel extends ViewModel implements AllMediaItemListsControl
 
 
     public ListViewModel() {
-        dataManager = new DataManager();
+        dataManager = new DataManager(Locale.getDefault().getLanguage());
     }
     public LiveData<List<MediaItemList>> getMediaItemLists(){
         Log.d(TAG,"getMediaItems is executed");

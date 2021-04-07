@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
+import java.util.Locale;
 
 import nl.avans.netnietflix.applogic.DataManager;
 import nl.avans.netnietflix.domain.MediaItem;
@@ -19,7 +20,7 @@ public class SearchViewModel extends ViewModel implements MediaItemControllerLis
     private DataManager dataManager;
 
     public SearchViewModel() {
-        dataManager = new DataManager();
+        dataManager = new DataManager(Locale.getDefault().getLanguage());
     }
 
     public LiveData<List<MediaItem>> getSearchMediaItems(){
