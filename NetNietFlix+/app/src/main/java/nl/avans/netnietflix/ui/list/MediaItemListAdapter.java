@@ -99,7 +99,7 @@ public class MediaItemListAdapter extends RecyclerView.Adapter<MediaItemListView
 
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                String shareSubject = "List: "+ mediaItemListListItem.getName() +"\n Description: "+ mediaItemListListItem.getDescription() +"\n Number of movies: "+ mediaItemListListItem.getItemCount();
+                String shareSubject = String.format("I want to share the movie list \"%s\" from NetNietFlix+ with you!\nIt has got %d movies.\nDescription: %s ",mediaItemListListItem.getName(),mediaItemListListItem.getItemCount(),mediaItemListListItem.getDescription());
                 sendIntent.putExtra(Intent.EXTRA_TEXT, shareSubject);
                 sendIntent.setType("text/plain");
 
