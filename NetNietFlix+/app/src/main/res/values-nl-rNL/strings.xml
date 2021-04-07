@@ -8,7 +8,10 @@
     <string name="top_rated">Best Beoordeeld</string>
     <string name="trending">Trending</string>
     <string name="list_removed">is verwijderd</string>
-    <string name="review_title">Geef rating</string>
+    <string name="rating_title">Geef rating</string>
+    <string name="review_title">Reviews</string>
+    <string name="submit">Verstuur</string>
+    <string name="title_mylist">Mijn lijsten</string>
     <string name="list_cannot_remove">De lijst \"Later Bekijken\" kan niet verwijderd worden</string>
     <string name="rating_added">Rating toegevoegd</string>
     <string name="rating">Rating</string>

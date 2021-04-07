@@ -8,7 +8,8 @@
     <string name="top_rated">Top Rated</string>
     <string name="trending">Trending</string>
     <string name="submit">submit</string>
-    <string name="review_title">Give rating</string>
+    <string name="rating_title">Give rating</string>
+    <string name="review_title">Reviews</string>
     <string-array name="filters">
         <item>Normal</item>
         <item>Rating</item>
