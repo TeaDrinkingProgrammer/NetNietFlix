@@ -7,7 +7,7 @@
     <string name="search_hint">Search movie...</string>
     <string name="top_rated">Top Rated</string>
     <string name="trending">Trending</string>
-    <string name="submit">submit</string>
+    <string name="submit">Submit rating</string>
     <string name="rating_title">Give rating</string>
     <string name="review_title">Reviews</string>
     <string name="add">Add to Watch Later</string>
@@ -22,4 +22,5 @@
     <string name="rating">Rating</string>
     <string name="item_added_to_list">Movie added to Watch Later</string>
     <string name="item_not_added_to_list">Movie could not be added to Watch Later. It may already be in there.</string>
+    <string name="watch_later_title">Watch Later</string>
 </resources>

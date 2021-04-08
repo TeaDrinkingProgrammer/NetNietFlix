@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private Slider slider;
     private Double savedValue;
     private Button addButton;
+    private String ratingTitle;
 
     public DetailActivity(){
         dataManager = new DataManager();
@@ -57,6 +59,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
         getSupportActionBar().hide();
+        ratingTitle = this.getResources().getString(R.string.rating);
         mTitle = (TextView) findViewById(R.id.media_item_title);
         mImage = (ImageView) findViewById(R.id.media_item_image);
         mOverview = (TextView) findViewById(R.id.media_item_overview);
@@ -70,13 +73,13 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         mReviewTitle2 = (TextView) findViewById(R.id.media_item_review_title_2);
         mReviewDescription2 = (TextView) findViewById(R.id.media_item_review_description_2);
         ProgressLabel = findViewById(R.id.media_item_sheezer_text);
-        ProgressLabel.setText("Rating 0.0");
+        ProgressLabel.setText(ratingTitle + " " + "0.0");
         savedValue = 0.0;
         slider = (Slider) findViewById(R.id.media_item_slider);
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                ProgressLabel.setText("Rating " + value);
+                ProgressLabel.setText(ratingTitle + " " + value);
                 savedValue = Double.valueOf(value);
             }
         });
