@@ -15,6 +15,7 @@
     <string name="list_cannot_remove">De lijst \"Later Bekijken\" kan niet verwijderd worden</string>
     <string name="rating_added">Rating toegevoegd</string>
     <string name="rating">Rating</string>
+    <string name="add">Voeg toe Later bekijken</string>
     <string name="item_added_to_list">Film toegevoegd aan Later Bekijken</string>
     <string name="item_not_added_to_list">Film kan niet worden toegevoegd aan Later Bekijken. Misschien staat de film er al in.</string>
 </resources>
