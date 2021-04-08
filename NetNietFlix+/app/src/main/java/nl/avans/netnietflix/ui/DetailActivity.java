@@ -59,7 +59,6 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
         getSupportActionBar().hide();
@@ -77,6 +76,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         mReviewDescription2 = (TextView) findViewById(R.id.media_item_review_description_2);
         ProgressLabel = findViewById(R.id.media_item_sheezer_text);
         ProgressLabel.setText("Rating 0.0");
+        savedValue = 0.0;
         slider = (Slider) findViewById(R.id.media_item_slider);
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
