@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
     private TextView mReleaseDate;
     private TextView mWatchtime;
     private Button submitButton;
-    private TextView ProgressLabel;
+    private TextView progressLabel;
     private TextView mReviewTitle1;
     private TextView mReviewDescription1;
     private TextView mReviewTitle2;
@@ -72,14 +72,14 @@ public class DetailActivity extends AppCompatActivity implements DetailedMediaIt
         mReviewDescription1 = (TextView) findViewById(R.id.media_item_review_description_1);
         mReviewTitle2 = (TextView) findViewById(R.id.media_item_review_title_2);
         mReviewDescription2 = (TextView) findViewById(R.id.media_item_review_description_2);
-        ProgressLabel = findViewById(R.id.media_item_sheezer_text);
-        ProgressLabel.setText(ratingTitle + " " + "0.0");
+        progressLabel = findViewById(R.id.media_item_sheezer_text);
+        progressLabel.setText(ratingTitle + " " + "0.0");
         savedValue = 0.0;
         slider = (Slider) findViewById(R.id.media_item_slider);
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                ProgressLabel.setText(ratingTitle + " " + value);
+                progressLabel.setText(ratingTitle + " " + value);
                 savedValue = Double.valueOf(value);
             }
         });
