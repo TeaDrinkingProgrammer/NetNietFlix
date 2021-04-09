@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T09:49:25.876Z" agent="5.0 (Windows)" etag="QW_WdIgyZUH2y-84QvK9" version="14.5.8" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-04-09T10:17:10.109Z" agent="5.0 (Windows)" etag="LhTg9jxJIbuGRbUDMYNl" version="14.5.8" type="github" pages="5">
   <diagram id="YvPclWVgMUa5uSCOIKsS" name="ERD">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1744,7 +1744,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="c--ZWRGK14Jw6gKtrsHF" name="Activity diagram">
-    <mxGraphModel dx="2858" dy="-39" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2500" dy="-238" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="H5sYtzii5KLrwhcXaRjJ-0" />
         <mxCell id="H5sYtzii5KLrwhcXaRjJ-1" parent="H5sYtzii5KLrwhcXaRjJ-0" />
@@ -2250,6 +2250,165 @@
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="H5sYtzii5KLrwhcXaRjJ-1" source="WP_7EnnUeUdO9rSucOdX-28" target="WP_7EnnUeUdO9rSucOdX-37">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-52" value="DetailPagina" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;" vertex="1" parent="H5sYtzii5KLrwhcXaRjJ-1">
+          <mxGeometry x="-180" y="3750" width="1460" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-64" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" source="WP_7EnnUeUdO9rSucOdX-63" parent="WP_7EnnUeUdO9rSucOdX-52" target="WP_7EnnUeUdO9rSucOdX-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="76" y="450.03" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-69" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-52" source="WP_7EnnUeUdO9rSucOdX-65" target="WP_7EnnUeUdO9rSucOdX-66">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="694" y="-1179.9999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-53" value="Lane 1" style="swimlane;html=1;startSize=20;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-52">
+          <mxGeometry y="20" width="350" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-57" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-53">
+          <mxGeometry x="49" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-58" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.25;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" source="WP_7EnnUeUdO9rSucOdX-57" parent="WP_7EnnUeUdO9rSucOdX-53" target="WP_7EnnUeUdO9rSucOdX-61">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="64.00000000000023" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-61" value="" style="shape=line;html=1;strokeWidth=6;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-53">
+          <mxGeometry x="10" y="140" width="270" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-62" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=0.527;exitY=0.833;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="WP_7EnnUeUdO9rSucOdX-61" parent="WP_7EnnUeUdO9rSucOdX-53" target="WP_7EnnUeUdO9rSucOdX-63">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="240" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-63" value="&lt;div&gt;[DetailActivity]&lt;/div&gt;&lt;div&gt;getReviewForMovieId&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-53">
+          <mxGeometry x="90" y="270" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-82" value="&lt;div&gt;[DetailActivity]&lt;/div&gt;&lt;div&gt;addRatingToMovie()&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-53">
+          <mxGeometry x="200" y="190" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-89" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=0.923;exitY=0.583;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="WP_7EnnUeUdO9rSucOdX-61" parent="WP_7EnnUeUdO9rSucOdX-53" target="WP_7EnnUeUdO9rSucOdX-82">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="180" as="targetPoint" />
+            <mxPoint x="290" y="110" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-97" value="&lt;div&gt;[DetailActivity]&lt;/div&gt;&lt;div&gt;getMediaItemDetails&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-53">
+          <mxGeometry x="20" y="320" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-98" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=0.25;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="WP_7EnnUeUdO9rSucOdX-61" parent="WP_7EnnUeUdO9rSucOdX-53" target="WP_7EnnUeUdO9rSucOdX-97">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="78" y="235" />
+              <mxPoint x="80" y="235" />
+              <mxPoint x="80" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-54" value="Lane 2" style="swimlane;html=1;startSize=20;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-52">
+          <mxGeometry x="350" y="20" width="490" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-65" value="&lt;div&gt;[DataManager]&lt;/div&gt;&lt;div&gt;getReviewForMovieId&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-54">
+          <mxGeometry x="30" y="270.0000000000002" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-83" value="&lt;div&gt;[DataManager]&lt;/div&gt;&lt;div&gt;addRatingToMovie()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-54">
+          <mxGeometry x="30" y="190" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-87" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-54" source="WP_7EnnUeUdO9rSucOdX-86">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-170" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1060" y="210" />
+              <mxPoint x="1060" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-92" value="&lt;div&gt;[DataManager]&lt;/div&gt;&lt;div&gt;getReviewForMovieId&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-54">
+          <mxGeometry x="30" y="320" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-96" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-54" source="WP_7EnnUeUdO9rSucOdX-95">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-170" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="940" y="340" />
+              <mxPoint x="980" y="340" />
+              <mxPoint x="980" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-55" value="Lane 3" style="swimlane;html=1;startSize=20;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-52">
+          <mxGeometry x="840" y="20" width="620" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-66" value="&lt;div&gt;[DataController]&lt;/div&gt;&lt;div&gt;getReviewForMovieId&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="40" y="270.0000000000002" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-68" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-55" source="WP_7EnnUeUdO9rSucOdX-66" target="WP_7EnnUeUdO9rSucOdX-67">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-300" y="-1219.9999999999998" as="targetPoint" />
+            <mxPoint x="-500" y="-989.9999999999998" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-67" value="&lt;div&gt;[AllMediaItemListsController]&lt;/div&gt;&lt;div&gt;onReviewsAvailable&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="270" y="270.0000000000002" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-70" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-55" source="WP_7EnnUeUdO9rSucOdX-67">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-660" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="290" />
+              <mxPoint x="520" y="460" />
+              <mxPoint x="-650" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-84" value="&lt;div&gt;[DataController]&lt;/div&gt;&lt;div&gt;addRatingToMovie()&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="40" y="190" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-86" value="&lt;div&gt;[AllMediaItemListsController]&lt;/div&gt;&lt;div&gt;onPost&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="270" y="190" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-85" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-55" source="WP_7EnnUeUdO9rSucOdX-84" target="WP_7EnnUeUdO9rSucOdX-86">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-330" y="-5070" as="targetPoint" />
+            <mxPoint x="-530" y="-4840" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-93" value="&lt;div&gt;[DataController]&lt;/div&gt;&lt;div&gt;getReviewForMovieId&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="40" y="322" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-95" value="&lt;div&gt;[AllMediaItemListsController]&lt;/div&gt;&lt;div&gt;onReviewsAvailable&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="WP_7EnnUeUdO9rSucOdX-55">
+          <mxGeometry x="270" y="322" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-94" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-55" source="WP_7EnnUeUdO9rSucOdX-93" target="WP_7EnnUeUdO9rSucOdX-95">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-960" y="-4920" as="targetPoint" />
+            <mxPoint x="-1160" y="-4690" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-80" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-52" source="WP_7EnnUeUdO9rSucOdX-82" target="WP_7EnnUeUdO9rSucOdX-83">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="347.5" y="-3369.9700000000003" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-90" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-52" target="WP_7EnnUeUdO9rSucOdX-92" source="WP_7EnnUeUdO9rSucOdX-97">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="256" y="-3229.9700000000003" as="targetPoint" />
+            <mxPoint x="150" y="370" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-81" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-52" source="WP_7EnnUeUdO9rSucOdX-83" target="WP_7EnnUeUdO9rSucOdX-84">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="965.5" y="-5010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WP_7EnnUeUdO9rSucOdX-91" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" parent="WP_7EnnUeUdO9rSucOdX-52" source="WP_7EnnUeUdO9rSucOdX-92" target="WP_7EnnUeUdO9rSucOdX-93">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="874" y="-4860" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
