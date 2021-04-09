@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T13:08:40.644Z" agent="5.0 (Windows)" etag="eHBg03lEsiAoqSUn13ZH" version="14.5.8" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-04-09T14:24:13.259Z" agent="5.0 (Windows)" etag="_mysnCVM8U31MpUArnM7" version="14.5.8" type="github" pages="5">
   <diagram id="YvPclWVgMUa5uSCOIKsS" name="ERD">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -292,7 +292,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="J-g16x0bUwrBLnx638c-" name="Package Diagram">
-    <mxGraphModel dx="1204" dy="2299" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1543" dy="2487" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="zBo10v9hbhoHT7qsSPf4-0" />
         <mxCell id="zBo10v9hbhoHT7qsSPf4-1" parent="zBo10v9hbhoHT7qsSPf4-0" />
@@ -1660,7 +1660,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="c--ZWRGK14Jw6gKtrsHF" name="Activity diagram">
-    <mxGraphModel dx="3197" dy="149" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4890" dy="1091" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="H5sYtzii5KLrwhcXaRjJ-0" />
         <mxCell id="H5sYtzii5KLrwhcXaRjJ-1" parent="H5sYtzii5KLrwhcXaRjJ-0" />
@@ -1994,7 +1994,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="49cVnU5MIyYh-Apl6PBV-65" value="Open Search" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;" parent="H5sYtzii5KLrwhcXaRjJ-1" vertex="1">
-          <mxGeometry x="2690" y="1510" width="1170" height="1550" as="geometry" />
+          <mxGeometry x="1580" y="1490" width="1170" height="1550" as="geometry" />
         </mxCell>
         <mxCell id="49cVnU5MIyYh-Apl6PBV-66" value="UI" style="swimlane;html=1;startSize=20;" parent="49cVnU5MIyYh-Apl6PBV-65" vertex="1">
           <mxGeometry y="20" width="390" height="1530" as="geometry" />
@@ -2157,19 +2157,19 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-7" value="&lt;div&gt;TextChangedListener klasse&lt;/div&gt;&lt;div&gt;op searchText&lt;br&gt;&lt;/div&gt;" style="html=1;" parent="H5sYtzii5KLrwhcXaRjJ-1" vertex="1">
-          <mxGeometry x="2490" y="1880" width="180" height="50" as="geometry" />
+          <mxGeometry x="1380" y="1860" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="H5sYtzii5KLrwhcXaRjJ-1" source="WP_7EnnUeUdO9rSucOdX-4" target="WP_7EnnUeUdO9rSucOdX-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-37" value="&lt;div&gt;Observer klasse op LiveData object&lt;/div&gt;&lt;div&gt;searchMediaItems.&lt;br&gt;&lt;/div&gt;" style="html=1;" parent="H5sYtzii5KLrwhcXaRjJ-1" vertex="1">
-          <mxGeometry x="2440" y="2310" width="221" height="50" as="geometry" />
+          <mxGeometry x="1330" y="2290" width="221" height="50" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="H5sYtzii5KLrwhcXaRjJ-1" source="WP_7EnnUeUdO9rSucOdX-28" target="WP_7EnnUeUdO9rSucOdX-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-52" value="DetailPagina" style="swimlane;html=1;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;" parent="H5sYtzii5KLrwhcXaRjJ-1" vertex="1">
-          <mxGeometry x="-100" y="3810" width="1780" height="1270" as="geometry" />
+          <mxGeometry x="3000" y="1490" width="1780" height="1270" as="geometry" />
         </mxCell>
         <mxCell id="WP_7EnnUeUdO9rSucOdX-64" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" parent="WP_7EnnUeUdO9rSucOdX-52" source="WP_7EnnUeUdO9rSucOdX-63" target="WP_7EnnUeUdO9rSucOdX-65" edge="1">
           <mxGeometry relative="1" as="geometry">
